@@ -1,4 +1,4 @@
-class Dimentions < ActiveRecord::Migration
+class CreateDimentions < ActiveRecord::Migration
   def up
     create_table :dimentions do |d|
       d.string :text

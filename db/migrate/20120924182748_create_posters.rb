@@ -1,4 +1,4 @@
-class CreatePoster < ActiveRecord::Migration
+class CreatePosters < ActiveRecord::Migration
   def up
     create_table :poster do |t|
       t.string :name
@@ -7,7 +7,7 @@ class CreatePoster < ActiveRecord::Migration
       t.boolean :flyers
       t.boolean :banner
       t.datetime :send_to_press
-      t.has_one :dimension
+      t.references :dimention
       #t.has_one :event, :class_name => "Event"
       #t.has_one :orderer, :class_name => "User"
       #t.has_one :responsible, :class_name => "User"
