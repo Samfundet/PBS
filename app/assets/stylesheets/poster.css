@@ -1,0 +1,14 @@
+.success {
+    border:1px solid green;
+    color:green;
+    font-size:20pt;
+}
+
+a {
+    text-decoration:none;
+    color:black;
+}
+
+li {
+    list-style-type:none;
+}

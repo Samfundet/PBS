@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PbsLocalhostNo</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+      <title>PbsLocalhostNo</title>
+      <%= stylesheet_link_tag    "application", :media => "all" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
+    <% unless flash.empty? %>
+        <% flash.each do |key, val| %>
+            <p class = <%= key %> >
+               <%= val %>
+            </p>
+        <% end %>
+    <% end %>
+    <%= yield %>
 
-<%= yield %>
-
-</body>
+    </body>
 </html>

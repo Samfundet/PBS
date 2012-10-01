@@ -1,0 +1,4 @@
+%ul
+  - @dims.each do |t|
+    %li
+      %a= link_to "#{t.text} med id: #{t.id}", t,:confirmation => "E du føkkings sikker?", :method => :delete
