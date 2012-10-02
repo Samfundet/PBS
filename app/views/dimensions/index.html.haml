@@ -1,4 +1,7 @@
 %ul
   - @dims.each do |t|
     %li
-      %a= link_to "#{t.text} med id: #{t.id}", t,:confirmation => "Are you sure?", :method => :delete
+      %span #{t.id}: #{t.text}
+      %a= link_to "show", t
+      %a= link_to "edit", :action => "edit", :id => t
+      %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete

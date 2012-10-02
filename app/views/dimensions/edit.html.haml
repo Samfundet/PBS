@@ -1,0 +1,8 @@
+= semantic_form_for @dim do |form|
+  %h4 Edit dimension
+
+  = form.inputs :name => "edit" do
+    != form.input :text
+
+  = form.actions do
+    != submit_tag 'Save', :id => "dimension_edit"

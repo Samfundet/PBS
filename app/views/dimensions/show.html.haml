@@ -1,0 +1,4 @@
+%p
+  %span #{@dim.id}: #{@dim.text}
+  %a= link_to "edit", :action => "edit", :id => @dim
+  %a= link_to "delete", @dim,:confirmation => "Are you sure?", :method => :delete

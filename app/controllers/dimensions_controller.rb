@@ -9,8 +9,20 @@ class DimensionsController < ApplicationController
 		@dims = Dimension.all
 	end
 
+  def show
+    @dim = Dimension.find(params[:id])
+  end
+
 	def edit
+    @dim = Dimension.find(params[:id])
 	end
+
+  def update
+    @dim = Dimension.find(params[:id])
+    @dim.text = params[:dimension][:text]
+    @dim.save
+    redirect_to :action => 'show', :id => @dim
+  end
 
 	def destroy
 		@dim = Dimension.find(params[:id])
