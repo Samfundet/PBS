@@ -1,6 +1,6 @@
 class CreatePosters < ActiveRecord::Migration
   def up
-    create_table :poster do |t|
+    create_table :posters do |t|
       t.string :name
       t.text :poster_text
       t.text :description
@@ -17,6 +17,6 @@ class CreatePosters < ActiveRecord::Migration
   end
 
   def down
-    drop_table :poster
+    drop_table :posters
   end
 end
