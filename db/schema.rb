@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20120924182748) do
     t.string "passord"
   end
 
-  create_table "poster", :force => true do |t|
+  create_table "posters", :force => true do |t|
     t.string   "name"
     t.text     "poster_text"
     t.text     "description"
