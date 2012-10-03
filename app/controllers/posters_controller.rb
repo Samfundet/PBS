@@ -7,7 +7,7 @@ class PostersController < ApplicationController
   end
 
   def new
-    @posters = Poster.all
+    @poster = Poster.new
   end
 
   def edit
