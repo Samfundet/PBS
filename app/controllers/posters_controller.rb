@@ -21,6 +21,7 @@ class PostersController < ApplicationController
 
   def update
     @poster = Poster.find(params[:id])
+    @poster.update_attributes(params[:poster])
   end
 
   def show
