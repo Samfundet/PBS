@@ -15,7 +15,19 @@ class PostersController < ApplicationController
     redirect_to posters_path
   end
 
+  def edit
+    @poster = Poster.find(params[:id])
+  end
+
   def update
+    @poster = Poster.find(params[:id])
+    if @poster.update_attributes(params[:poster])
+      flash[:success] = "Plakaten er endret."
+    else
+      flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
+      render :action => 'edit'
+    end
+    redirect_to posters_path
   end
 
   def show
@@ -24,9 +36,6 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
-  end
-
-  def edit
   end
 
   def cancel
