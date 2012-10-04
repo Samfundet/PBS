@@ -36,6 +36,7 @@ class PostersController < ApplicationController
   end
 
   def archive
+
   end
 
   def destroy

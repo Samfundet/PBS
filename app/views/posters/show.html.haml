@@ -1,3 +1,7 @@
+%p
+  =link_to posters_path do
+    Tilbake
+
 %ul
   %li
     name:
@@ -17,3 +21,6 @@
   %li
     Is the poster sent to press:
     = @poster.send_to_press
+  %li
+    Is the poster archived:
+    = @poster.archived

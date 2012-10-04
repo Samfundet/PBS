@@ -1,9 +1,11 @@
 %ul
   - @posters.each do |t|
-    %li
-      %span #{t.id}: #{t.name}
-      %a= link_to "show", t
-      %a= link_to "edit", :action => "edit", :id => t
-      %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
+    - unless t.archived
+      %li
+        %span #{t.id}: #{t.name}
+        %a= link_to "show", t
+        %a= link_to "edit", :action => "edit", :id => t
+        %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
+        %a= link_to "archive", t
 %br
 =link_to "lag plakat", :action => "new"
