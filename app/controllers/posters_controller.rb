@@ -15,7 +15,12 @@ class PostersController < ApplicationController
     redirect_to posters_path
   end
 
+  def edit
+    @poster = Poster.find(params[:id])
+  end
+
   def update
+    @poster = Poster.find(params[:id])
   end
 
   def show
@@ -24,9 +29,6 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
-  end
-
-  def edit
   end
 
   def cancel
