@@ -1,7 +1,7 @@
 class PostersController < ApplicationController
 
   def index
-    @posters=Posters.all
+    @posters = Poster.all
   end
 
   def create
@@ -12,6 +12,7 @@ class PostersController < ApplicationController
       flash[:error] = "Vennligst fyll ut alle felter."
       render :action => 'new'
     end
+    redirect_to posters_path
   end
 
   def update
@@ -36,6 +37,9 @@ class PostersController < ApplicationController
   def archive
   end
 
-  def delete
+  def destroy
+    Poster.destroy(params[:id])
+    flash[:success] = "Plakaten er slettet."
+    redirect_to posters_path
   end
 end
