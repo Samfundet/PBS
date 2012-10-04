@@ -1,8 +1,19 @@
 %ul
-  %li -@posters.name
-  %li -@posters.poster_text
-  %li -@posters.description
-  %li -@posters.flyers
-  %li -@posters.banner
-  %li -@posters.send_to_press
-  %li -@posters.dimention.text
+  %li
+    name:
+    = @poster.name
+  %li
+    Text for the poster:
+    = @poster.poster_text
+  %li
+    Desciption:
+    = @poster.description
+  %li
+    Should the poster have flyers:
+    = @poster.flyers
+  %li
+    Should the poster have banners:
+    = @poster.banner
+  %li
+    Is the poster sent to press:
+    = @poster.send_to_press
