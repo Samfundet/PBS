@@ -1,17 +1,22 @@
-=form_for @poster do |p|
-  %h3 Navn på plakat:
-  =p.text_field :name
-  %br
-  %h3 Teksten du vil ha på plakaten:
-  =p.text_area :poster_text
-  %br
-  %h3 Beskrivelse av plakaten:
-  =p.text_area :description
-  %br
-  %h3 Vil du ha flyers?
-  =p.check_box :flyers
-  %br
-  %h3 Vil du ha bannere?
-  =p.check_box :banner
-  %br
-  =p.submit("Lag Plakat")
+/=form_for @poster do |p|
+/  %h3 Navn på plakat:
+/  =p.text_field :name
+/  %br
+/  %h3 Teksten du vil ha på plakaten:
+/  =p.text_area :poster_text
+/  %br
+/  %h3 Beskrivelse av plakaten:
+/  =p.text_area :description
+/  %br
+/  %h3 Vil du ha flyers?
+/  =p.check_box :flyers
+/  %br
+/  %h3 Vil du ha bannere?
+/  =p.check_box :banner
+/  %br
+/  =p.submit("Lag Plakat")
+/  %br
+/  =p.select :dimension
+=semantic_form_for @poster do |p|
+  =p.inputs
+  =p.actions :submit, :cancel
