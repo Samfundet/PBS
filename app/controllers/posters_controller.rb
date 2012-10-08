@@ -42,10 +42,14 @@ class PostersController < ApplicationController
   end
 
   def take
+    @poster = Poster.find(params[:id])
+    @poster.update_attributes(:member_id => "ANSVARLIG")
+    flash[:success] = "Du er naa ansvarlig."
+    redirect_to posters_path
   end
 
   def archive
-    @posters = Poster.all
+    @posters = Poster.order('send_to_press DESC')
   end
 
   def archive_poster

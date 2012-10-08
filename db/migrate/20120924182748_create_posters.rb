@@ -9,10 +9,7 @@ class CreatePosters < ActiveRecord::Migration
       t.boolean :archived, :default =>false
       t.datetime :send_to_press
       t.references :dimension
-
-      #t.has_one :event, :class_name => "Event"
-      #t.has_one :orderer, :class_name => "User"
-      #t.has_one :responsible, :class_name => "User"
+      t.references :member
 
       t.timestamps
     end

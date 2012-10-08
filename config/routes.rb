@@ -56,6 +56,7 @@ PbsLocalhostNo::Application.routes.draw do
     get :archive, :on => :collection
   end
   root :to => 'posters#index'
+  match '/take' => 'posters#take'
 
   # See how all your routes lay out with "rake routes"
 

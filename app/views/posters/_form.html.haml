@@ -18,5 +18,10 @@
 /  %br
 /  =p.select :dimension
 =semantic_form_for @poster do |p|
-  =p.inputs
+  =p.inputs :name
+  =p.inputs :poster_text
+  =p.inputs :description
+  =p.inputs :flyers
+  =p.inputs :banner
+  =p.inputs :dimension
   =p.actions :submit, :cancel
