@@ -1,3 +1,5 @@
+%h1
+  Arkiverte plakater
 %p
   =link_to posters_path do
     Tilbake
@@ -10,4 +12,4 @@
         %a= link_to "show", t
         %a= link_to "edit", :action => "edit", :id => t
         %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
-        /%a= link_to "gjennopprett", :action => "archive", :id => t     TODO: Implement this
+        %a= link_to "restore", restore_poster_path(t), :method => :put

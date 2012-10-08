@@ -56,12 +56,12 @@ class PostersController < ApplicationController
     redirect_to posters_path
   end
 
-  def unarchive_poster
+  def restore
     poster = Poster.find(params[:id])
     poster.archived = false
     poster.save
     flash[:success] = "Plakaten er gjennopprettet."
-    redirect_to posters_path
+    redirect_to archive_posters_path
 
   end
 
