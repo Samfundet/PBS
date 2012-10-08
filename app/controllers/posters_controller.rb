@@ -1,7 +1,7 @@
 class PostersController < ApplicationController
 
   def index
-    @posters = Poster.all
+    @posters = Poster.order('updated_at DESC')
   end
 
   def create
