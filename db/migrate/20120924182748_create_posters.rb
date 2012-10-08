@@ -7,6 +7,7 @@ class CreatePosters < ActiveRecord::Migration
       t.boolean :flyers
       t.boolean :banner
       t.boolean :archived, :default =>false
+      t.boolean :canceled,  :default =>false
       t.datetime :send_to_press
       t.references :dimension
       t.references :member
