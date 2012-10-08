@@ -6,6 +6,8 @@
         %a= link_to "show", t
         %a= link_to "edit", :action => "edit", :id => t
         %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
-        %a= link_to "archive", t
+        %a= link_to "archive", archive_poster_path(t), :method => :put
 %br
 =link_to "lag plakat", :action => "new"
+%br
+=link_to "Arkiv", archive_posters_path

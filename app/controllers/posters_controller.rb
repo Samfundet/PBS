@@ -45,6 +45,23 @@ class PostersController < ApplicationController
   end
 
   def archive
+    @posters = Poster.all
+  end
+
+  def archive_poster
+    poster = Poster.find(params[:id])
+    poster.archived = true
+    poster.save
+    flash[:success] = "Plakaten er arkivert."
+    redirect_to posters_path
+  end
+
+  def unarchive_poster
+    poster = Poster.find(params[:id])
+    poster.archived = false
+    poster.save
+    flash[:success] = "Plakaten er gjennopprettet."
+    redirect_to posters_path
 
   end
 

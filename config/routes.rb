@@ -50,7 +50,11 @@ PbsLocalhostNo::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
   resources :dimensions
-  resources :posters
+  resources :posters do
+    put :archive, :on => :member, :action => "archive_poster"
+    put :restore, :on => :member
+    get :archive, :on => :collection
+  end
   root :to => 'posters#index'
 
   # See how all your routes lay out with "rake routes"

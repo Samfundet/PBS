@@ -1,0 +1,13 @@
+%p
+  =link_to posters_path do
+    Tilbake
+
+%ul
+  - @posters.each do |t|
+    - if t.archived
+      %li
+        %span #{t.id}: #{t.name}
+        %a= link_to "show", t
+        %a= link_to "edit", :action => "edit", :id => t
+        %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
+        /%a= link_to "gjennopprett", :action => "archive", :id => t     TODO: Implement this
