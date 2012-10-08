@@ -5,11 +5,11 @@
     - unless t.archived
       %li
         %span #{t.id}: #{t.name}
-        %a= link_to "show", t
-        %a= link_to "edit", :action => "edit", :id => t
-        %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
-        %a= link_to "archive", archive_poster_path(t), :method => :put
+        %a= link_to "Vis", t
+        %a= link_to "Rediger", :action => "edit", :id => t
+        %a= link_to "Slett", t,:confirmation => "Are you sure?", :method => :delete
+        %a= link_to "Arkiver", archive_poster_path(t), :method => :put
 %br
-=link_to "lag plakat", :action => "new"
+=link_to "Lag ny plakat", :action => "new"
 %br
-=link_to "Arkiv", archive_posters_path
+=link_to "Gå til arkiv", archive_posters_path
