@@ -45,7 +45,7 @@ class PostersController < ApplicationController
   end
 
   def archive
-    @posters = Poster.all
+    @posters = Poster.order('send_to_press DESC')
   end
 
   def archive_poster
