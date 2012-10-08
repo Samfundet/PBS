@@ -1,9 +1,19 @@
 class DimensionsController < ApplicationController
 	def new
-		dim = Dimension.new
-		dim.text = "Dimension"
-		dim.save
+		@dim = Dimension.new
 	end
+
+  def create
+    @dim = Dimension.new(params[:dimension])
+    if @dim.save
+      flash[:success] = "Dimensjonen er laget."
+    else
+      flash[:error] = "Vennligst fyll ut alle felter."
+      render :action => 'new'
+    end
+    redirect_to dimensions_path
+  end
+
 
 	def index
 		@dims = Dimension.all
