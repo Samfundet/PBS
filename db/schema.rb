@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# -*- encoding : utf-8 -*-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -31,10 +31,13 @@ ActiveRecord::Schema.define(:version => 20120924182748) do
     t.text     "description"
     t.boolean  "flyers"
     t.boolean  "banner"
+    t.boolean  "archived",      :default => false
+    t.boolean  "canceled",      :default => false
     t.datetime "send_to_press"
     t.integer  "dimension_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "member_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
 end

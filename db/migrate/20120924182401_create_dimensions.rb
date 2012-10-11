@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateDimensions < ActiveRecord::Migration
   def up
     create_table :dimensions do |d|

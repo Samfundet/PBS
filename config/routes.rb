@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 PbsLocalhostNo::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,6 +55,10 @@ PbsLocalhostNo::Application.routes.draw do
     put :archive, :on => :member, :action => "archive_poster"
     put :restore, :on => :member
     get :archive, :on => :collection
+=begin
+    put :cancel,  :on => :member, :action => "cancel_poster"
+    get :cancel,  :on => :collection
+=end
   end
   root :to => 'posters#index'
   match '/take' => 'posters#take'
