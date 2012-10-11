@@ -61,6 +61,7 @@ PbsLocalhostNo::Application.routes.draw do
   end
   root :to => 'posters#index'
   match '/take' => 'posters#take'
+  match '/login/:id' => 'posters#set_current_user'
 
   # See how all your routes lay out with "rake routes"
 
