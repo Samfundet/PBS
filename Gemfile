@@ -22,7 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'rb-readline'
 group :test do
   gem 'sqlite3'
   gem 'cucumber'

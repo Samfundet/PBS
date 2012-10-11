@@ -114,7 +114,7 @@ class PostersController < ApplicationController
   def set_current_user
     session[:member_id] = params[:id]
     @current_user ||= Member.find(session[:member_id])
-    flash[:success] = "Du er nå logget inn, #{@current_user.id}"
+    flash[:success] = "Du er nå logget inn, #{@current_user.firstname} #{@current_user.surname}"
     redirect_to posters_path
   end
 

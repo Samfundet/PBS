@@ -6,8 +6,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:member_id]
-      @current_user ||= Member.find(session[:member_id])
-      flash[:success] = "Du er logget inn som #{@current_user.id}"
+      begin
+        @current_user ||= Member.find(session[:member_id])
+        flash[:success] = "Du er logget inn som #{@current_user.firstname} #{@current_user.surname}"
+      rescue
+        end
     end
   end
 
