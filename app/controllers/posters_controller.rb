@@ -23,6 +23,8 @@ class PostersController < ApplicationController
   def update
     @poster = Poster.find(params[:id])
     if @poster.update_attributes(params[:poster])
+      member = Member.find(1)
+      PosterMailer.poster_changed(member, @poster).deliver
       flash[:success] = "Plakaten er endret."
     else
       flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
@@ -37,6 +39,7 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
+    @poster.member = Member.find(1)
   end
 
   def cancel_poster

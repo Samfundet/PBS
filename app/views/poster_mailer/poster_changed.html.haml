@@ -1,0 +1,5 @@
+%html
+  %body
+    %h2 Hei #{@member.firstname} #{@member.surname}. #{@poster.name} har blitt endret.
+    %p for å se på endringene kan du trykke #{@url}
+    = link_to 'HER', @url
