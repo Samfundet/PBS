@@ -6,3 +6,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+number_of_members = 50
+number_of_members.times do |member_number|
+  member = Member.create!(
+      :firstname => "Bolle",
+      :surname => "Bolla",
+      :phone => (10000000 + rand * 9000000).to_i.to_s,
+      :email => "bolle@bolla.com",
+      :password => 'passord',
+  )
+end
+
+
