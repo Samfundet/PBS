@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PostersController < ApplicationController
 
   def index
@@ -38,7 +39,16 @@ class PostersController < ApplicationController
     @poster = Poster.new
   end
 
+  def cancel_poster
+    poster = Poster.find(params[:id])
+    poster.canceled = true
+    poster.save
+    flash[:success] = "Plakaten er naa avbestilt"
+    redirect_to posters_path
+  end
+
   def cancel
+    @posters = Poster.order('send_to_press DESC')
   end
 
   def take
@@ -60,13 +70,21 @@ class PostersController < ApplicationController
     redirect_to posters_path
   end
 
-  def restore
+  def restore_archived
     poster = Poster.find(params[:id])
     poster.archived = false
+    poster.canceled = false
     poster.save
-    flash[:success] = "Plakaten er gjennopprettet."
+    flash[:success] = "Plakaten er gjenopprettet."
     redirect_to archive_posters_path
+  end
 
+  def restore_canceled
+    poster = Poster.find(params[:id])
+    poster.canceled = false
+    poster.save
+    flash[:success] = "Plakaten er gjenopprettet."
+    redirect_to cancel_posters_path
   end
 
   def destroy
