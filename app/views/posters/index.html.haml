@@ -2,7 +2,7 @@
   Aktive plakater
 %ul
   - @posters.each do |t|
-    - unless t.archived
+    - unless t.archived or t.canceled
       %li
         %span #{t.id}: #{t.name}
         %a= link_to "Vis", t
