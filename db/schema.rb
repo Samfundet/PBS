@@ -31,14 +31,13 @@ ActiveRecord::Schema.define(:version => 20120924182748) do
     t.text     "description"
     t.boolean  "flyers"
     t.boolean  "banner"
-    t.boolean  "archived",       :default => false
-    t.boolean  "canceled",       :default => false
+    t.string   "status",         :limit => 20
     t.datetime "send_to_press"
     t.integer  "dimension_id"
     t.integer  "responsible_id"
     t.integer  "orderer_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
 end

@@ -53,11 +53,10 @@ PbsLocalhostNo::Application.routes.draw do
   resources :dimensions
   resources :posters do
     put :archive, :on => :member, :action => "archive_poster"
-    put :restore_archived, :on => :member, :action => "restore_archived"
+    put :restore, :on => :member, :action => "restore"
     get :archive, :on => :collection
     put :cancel,  :on => :member, :action => "cancel_poster"
     get :cancel,  :on => :collection
-    put :restore_canceled, :on => :member, :action => "restore_canceled"
   end
   root :to => 'posters#index'
   match 'posters/take/:id' => 'posters#take'

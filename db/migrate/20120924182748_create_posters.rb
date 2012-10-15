@@ -7,8 +7,7 @@ class CreatePosters < ActiveRecord::Migration
       t.text :description
       t.boolean :flyers
       t.boolean :banner
-      t.boolean :archived, :default =>false
-      t.boolean :canceled,  :default =>false
+      t.string :status, :limit => 20
       t.datetime :send_to_press
       t.references :dimension
       t.integer :responsible_id

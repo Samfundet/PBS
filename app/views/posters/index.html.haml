@@ -2,15 +2,15 @@
   Aktive plakater
 %ul
   - @posters.each do |t|
-    - unless t.archived or t.canceled
-      %li
-        %span #{t.id}: #{t.name}
-        %a= link_to "Vis", t
-        %a= link_to "Rediger", :action => "edit", :id => t
-        %a= link_to "Slett", t,:confirmation => "Are you sure?", :method => :delete
-        %a= link_to "Arkiver", archive_poster_path(t), :method => :put
-        %a= link_to "Avbestill", cancel_poster_path(t), :method => :put
-        %a= link_to "Ta jobben", :action => "take", :id => t
+
+    %li
+      %span #{t.id}: #{t.name}
+      %a= link_to "Vis", t
+      %a= link_to "Rediger", :action => "edit", :id => t
+      %a= link_to "Slett", t,:confirmation => "Are you sure?", :method => :delete
+      %a= link_to "Arkiver", archive_poster_path(t), :method => :put
+      %a= link_to "Avbestill", cancel_poster_path(t), :method => :put
+      %a= link_to "Ta jobben", :action => "take", :id => t
 %br
 =link_to "Lag ny plakat", :action => "new"
 %br

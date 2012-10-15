@@ -2,12 +2,13 @@
 class PostersController < ApplicationController
 
   def index
-    @posters = Poster.order('updated_at DESC')
+    @posters = Poster.where(:status => :active).order('updated_at DESC')
   end
 
   def create
     @poster = Poster.new(params[:poster])
     @poster.orderer = @current_user
+    @poster.status = :active
     if @poster.save
       flash[:success] = "Plakaten er laget."
     else
@@ -44,7 +45,7 @@ class PostersController < ApplicationController
 
   def cancel_poster
     poster = Poster.find(params[:id])
-    poster.canceled = true
+    poster.status = :canceled
     if poster.save
       flash[:success] = "Plakaten er naa avbestilt"
     else
@@ -54,7 +55,7 @@ class PostersController < ApplicationController
   end
 
   def cancel
-    @posters = Poster.order('send_to_press DESC')
+    @posters = Poster.where(:status => :canceled).order('updated_at DESC')
   end
 
   def take
@@ -69,12 +70,12 @@ class PostersController < ApplicationController
   end
 
   def archive
-    @posters = Poster.order('send_to_press DESC')
+    @posters = Poster.where(:status => :archived).order('updated_at DESC')
   end
 
   def archive_poster
     poster = Poster.find(params[:id])
-    poster.archived = true
+    poster.status = :archived
     if poster.save
       flash[:success] = "Plakaten er arkivert."
     else
@@ -83,27 +84,15 @@ class PostersController < ApplicationController
     redirect_to posters_path
   end
 
-  def restore_archived
+  def restore
     poster = Poster.find(params[:id])
-    poster.archived = false
-    poster.canceled = false
+    poster.status = :active
     if poster.save
       flash[:success] = "Plakaten er gjenopprettet."
     else
       flash[:error] = "Noe gikk galt, plakaten er ikke gjenopprettet."
      end
-    redirect_to archive_posters_path
-  end
-
-  def restore_canceled
-    poster = Poster.find(params[:id])
-    poster.canceled = false
-    if poster.save
-      flash[:success] = "Plakaten er gjenopprettet."
-    else
-      flash[:error] = "Noe  gikk galt, plakaten er ikke gjenopprettet."
-    end
-    redirect_to cancel_posters_path
+    redirect_to posters_path
   end
 
   def destroy
