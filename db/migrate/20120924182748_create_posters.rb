@@ -11,7 +11,8 @@ class CreatePosters < ActiveRecord::Migration
       t.boolean :canceled,  :default =>false
       t.datetime :send_to_press
       t.references :dimension
-      t.references :member
+      t.integer :responsible_id
+      t.integer :orderer_id
 
       t.timestamps
     end

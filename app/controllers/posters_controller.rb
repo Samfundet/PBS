@@ -7,6 +7,7 @@ class PostersController < ApplicationController
 
   def create
     @poster = Poster.new(params[:poster])
+    @poster.orderer = @current_user
     if @poster.save
       flash[:success] = "Plakaten er laget."
     else
@@ -23,8 +24,7 @@ class PostersController < ApplicationController
   def update
     @poster = Poster.find(params[:id])
     if @poster.update_attributes(params[:poster])
-      member = Member.find(1)
-      PosterMailer.poster_changed(member, @poster).deliver
+      PosterMailer.poster_changed(@poster).deliver
       flash[:success] = "Plakaten er endret."
     else
       flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
@@ -39,7 +39,6 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
-    @poster.member_id = @current_user.id
   end
 
   def cancel_poster
@@ -59,7 +58,8 @@ class PostersController < ApplicationController
 
   def take
     @poster = Poster.find(params[:id])
-    if @poster.update_attributes(:member_id => @current_user.id)
+    if @poster.responsible = @current_user
+      @poster.save
       flash[:success] = "Du er naa ansvarlig."
     else
       flash[:error] = "Noe gikk galt, du ble ikke gjort til ansvarlig"
