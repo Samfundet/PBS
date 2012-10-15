@@ -18,22 +18,10 @@
 /  %br
 /  =p.select :dimension
 =semantic_form_for @poster do |p|
-  %dd
-    =p.inputs :name
-    %p Forsøk å gi en beskrivende tittel.
-  %dd
-    =p.inputs :poster_text
-    %p Dette er teksten som skal stå på plakaten.
-  %dd
-    =p.inputs :description
-    %p Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite.
-  %dd
-    =p.inputs :flyers
-    %p Huk av om du ønsker flyers i tillegg.
-  %dd
-    =p.inputs :banner
-    %p Huk av om du ønsker bannere i tillegg.
-  %dd
-    =p.inputs :dimension
-    %p Velg ønskede fysiske mål på plakaten.
+  =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
+  =p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
+  =p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
+  =p.input :flyers, :hint => "Huk av om du ønsker flyers i tillegg."
+  =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
+  =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene."
   =p.actions :submit, :cancel
