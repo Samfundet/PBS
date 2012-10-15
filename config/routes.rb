@@ -60,7 +60,7 @@ PbsLocalhostNo::Application.routes.draw do
     put :restore_canceled, :on => :member, :action => "restore_canceled"
   end
   root :to => 'posters#index'
-  match '/take' => 'posters#take'
+  match 'posters/take/:id' => 'posters#take'
   match '/login/:id' => 'posters#set_current_user'
 
   # See how all your routes lay out with "rake routes"
