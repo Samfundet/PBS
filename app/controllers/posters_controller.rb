@@ -39,7 +39,7 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
-    @poster.member = Member.find(1)
+    @poster.member_id = @current_user.id
   end
 
   def cancel_poster
@@ -59,7 +59,7 @@ class PostersController < ApplicationController
 
   def take
     @poster = Poster.find(params[:id])
-    if @poster.update_attributes(:member_id => "ANSVARLIG")
+    if @poster.update_attributes(:member_id => @current_user.id)
       flash[:success] = "Du er naa ansvarlig."
     else
       flash[:error] = "Noe gikk galt, du ble ikke gjort til ansvarlig"

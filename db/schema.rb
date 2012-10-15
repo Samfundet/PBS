@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(:version => 20120924182748) do
   end
 
   create_table "members", :primary_key => "medlem_id", :force => true do |t|
-    t.string "fornavn"
-    t.string "etternavn"
-    t.string "mail"
-    t.string "telefon"
-    t.string "passord"
+    t.string "firstname"
+    t.string "surname"
+    t.string "email"
+    t.string "phone"
+    t.string "password"
   end
 
   create_table "posters", :force => true do |t|
