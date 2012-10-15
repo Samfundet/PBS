@@ -26,6 +26,7 @@ class PostersController < ApplicationController
     if @poster.update_attributes(params[:poster])
       PosterMailer.poster_changed(@poster).deliver
       flash[:success] = "Plakaten er endret."
+
     else
       flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
       render :action => 'edit'

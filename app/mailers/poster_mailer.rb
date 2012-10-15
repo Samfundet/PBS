@@ -3,7 +3,7 @@ class PosterMailer < ActionMailer::Base
 
   def poster_changed(poster)
     if poster.responsible == nil
-      email = 'mlysgaard@gmail.com'
+      email = 'mlysgaard@gmail.com' # change to the default mail
     else
       email = poster.responsible.email
     end
@@ -11,4 +11,5 @@ class PosterMailer < ActionMailer::Base
     @url = poster_url @poster
     mail(:to => email, :subject => "poster changed")
   end
+
 end
