@@ -58,9 +58,13 @@ class PostersController < ApplicationController
   end
 
   def take
+    @posters = Poster.where(:responsible_id => @current_user.id).order('updated_at DESC')
+  end
+
+  def take_poster
     @poster = Poster.find(params[:id])
-    if @poster.responsible = @current_user
-      @poster.save
+    @poster.responsible = @current_user
+    if @poster.save
       flash[:success] = "Du er naa ansvarlig."
       redirect_to posters_path
     else

@@ -10,10 +10,12 @@
       %a= link_to "Slett", t,:confirmation => "Are you sure?", :method => :delete
       %a= link_to "Arkiver", archive_poster_path(t), :method => :put
       %a= link_to "Avbestill", cancel_poster_path(t), :method => :put
-      %a= link_to "Ta jobben", :action => "take", :id => t
+      %a= link_to "Ta jobben", take_poster_path(t), :method => :put
 %br
 =link_to "Lag ny plakat", :action => "new"
 %br
 =link_to "Gå til arkiv", archive_posters_path
 %br
 =link_to "Gå til avbestilte", cancel_posters_path
+%br
+=link_to "Gå til de du har ansvar for", take_posters_path

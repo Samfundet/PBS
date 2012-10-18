@@ -52,14 +52,15 @@ PbsLocalhostNo::Application.routes.draw do
   # root :to => 'welcome#index'
   resources :dimensions
   resources :posters do
-    put :archive, :on => :member, :action => "archive_poster"
     put :restore, :on => :member, :action => "restore"
+    put :archive, :on => :member, :action => "archive_poster"
     get :archive, :on => :collection
     put :cancel,  :on => :member, :action => "cancel_poster"
     get :cancel,  :on => :collection
+    put :take,    :on => :member, :action => "take_poster"
+    get :take,    :on => :collection, :action => "take"
   end
   root :to => 'posters#index'
-  match 'posters/take/:id' => 'posters#take'
   match '/login/:id' => 'posters#set_current_user'
 
   # See how all your routes lay out with "rake routes"
