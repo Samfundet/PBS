@@ -59,6 +59,7 @@ PbsLocalhostNo::Application.routes.draw do
     get :cancel,  :on => :collection
     put :take,    :on => :member, :action => "take_poster"
     get :take,    :on => :collection, :action => "take"
+    get :order,   :on => :collection, :action => "order"
   end
   root :to => 'posters#index'
   match '/login/:id' => 'posters#set_current_user'

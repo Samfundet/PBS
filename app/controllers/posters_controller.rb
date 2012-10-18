@@ -57,6 +57,10 @@ class PostersController < ApplicationController
     @posters = Poster.where(:status => :canceled).order('updated_at DESC')
   end
 
+  def order
+    @posters = Poster.where(:orderer_id => @current_user.id).order('updated_at DESC')
+  end
+
   def take
     @posters = Poster.where(:responsible_id => @current_user.id).order('updated_at DESC')
   end
