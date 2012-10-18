@@ -11,11 +11,11 @@ class PostersController < ApplicationController
     @poster.status = :active
     if @poster.save
       flash[:success] = "Plakaten er laget."
+      redirect_to posters_path
     else
       flash[:error] = "Vennligst fyll ut alle felter."
       render :action => 'new'
     end
-    redirect_to posters_path
   end
 
   def edit
@@ -27,12 +27,11 @@ class PostersController < ApplicationController
     if @poster.update_attributes(params[:poster])
       PosterMailer.poster_changed(@poster).deliver
       flash[:success] = "Plakaten er endret."
-
+      redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
       render :action => 'edit'
     end
-    redirect_to posters_path
   end
 
   def show
@@ -48,10 +47,10 @@ class PostersController < ApplicationController
     poster.status = :canceled
     if poster.save
       flash[:success] = "Plakaten er naa avbestilt"
+      redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, plakaten er ikke avbestilt"
     end
-    redirect_to posters_path
   end
 
   def cancel
@@ -63,10 +62,10 @@ class PostersController < ApplicationController
     if @poster.responsible = @current_user
       @poster.save
       flash[:success] = "Du er naa ansvarlig."
+      redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, du ble ikke gjort til ansvarlig"
     end
-    redirect_to posters_path
   end
 
   def archive
@@ -78,10 +77,10 @@ class PostersController < ApplicationController
     poster.status = :archived
     if poster.save
       flash[:success] = "Plakaten er arkivert."
+      redirect_to posters_path
     else
       flash[:error]  = "Noe gikk galt, plakaten er ikke arkivert"
     end
-    redirect_to posters_path
   end
 
   def restore
@@ -89,19 +88,19 @@ class PostersController < ApplicationController
     poster.status = :active
     if poster.save
       flash[:success] = "Plakaten er gjenopprettet."
+      redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, plakaten er ikke gjenopprettet."
      end
-    redirect_to posters_path
   end
 
   def destroy
     if Poster.destroy(params[:id])
       flash[:success] = "Plakaten er slettet."
+      redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, plakaten er ikke slettet."
     end
-    redirect_to posters_path
   end
 
   def set_current_user
