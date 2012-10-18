@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Poster < ActiveRecord::Base
-  attr_accessible :name, :poster_text, :description, :flyers, :banner, :send_to_press, :dimension_id, :responsible_id, :orderer_id, :status
+  attr_accessible :name, :poster_text, :description, :specification, :flyers, :banner, :send_to_press, :dimension_id, :responsible_id, :orderer_id, :status
 	belongs_to :dimension
   belongs_to :responsible, :class_name => 'Member', :foreign_key => :responsible_id
   belongs_to :orderer, :class_name => 'Member', :foreign_key => :orderer_id
