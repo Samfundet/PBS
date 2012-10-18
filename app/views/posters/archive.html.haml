@@ -4,11 +4,4 @@
   =link_to posters_path do
     Tilbake
 
-%ul
-  - @posters.each do |t|
-    %li
-      %span #{t.id}: #{t.name}
-      %a= link_to "Vis", t
-      %a= link_to "Rediger", :action => "edit", :id => t
-      %a= link_to "Slett", t,:confirmation => "Are you sure?", :method => :delete
-      %a= link_to "Gjenopprett", restore_poster_path(t), :method => :put
+=render "list"

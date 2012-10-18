@@ -2,7 +2,7 @@
 class PostersController < ApplicationController
 
   def index
-    @posters = Poster.where(:status => :active).order('updated_at DESC')
+    @posters = Poster.where(:status => :active).order("#{sort_column} #{sort_order}")
   end
 
   def create
@@ -54,7 +54,7 @@ class PostersController < ApplicationController
   end
 
   def cancel
-    @posters = Poster.where(:status => :canceled).order('updated_at DESC')
+    @posters = Poster.where(:status => :canceled).order("#{sort_column} #{sort_order}")
   end
 
   def order
@@ -69,6 +69,7 @@ class PostersController < ApplicationController
     @poster = Poster.find(params[:id])
     @poster.responsible = @current_user
     if @poster.save
+      PosterMailer.poster_taken(@poster).deliver
       flash[:success] = "Du er naa ansvarlig."
       redirect_to posters_path
     else
@@ -77,7 +78,7 @@ class PostersController < ApplicationController
   end
 
   def archive
-    @posters = Poster.where(:status => :archived).order('updated_at DESC')
+    @posters = Poster.where(:status => :archived).order("#{sort_column} #{sort_order}")
   end
 
   def archive_poster
@@ -116,6 +117,15 @@ class PostersController < ApplicationController
     @current_user ||= Member.find(session[:member_id])
     flash[:success] = "Du er nå logget inn, #{@current_user.firstname} #{@current_user.surname}"
     redirect_to posters_path
+  end
+
+  private 
+  def sort_column
+    Poster.column_names.include?(params[:sort]) ? params[:sort] : 'updated_at'
+  end
+
+  def sort_order
+    ['asc', 'desc'].include?(params[:order]) ? params[:order] : 'desc'
   end
 
 end
