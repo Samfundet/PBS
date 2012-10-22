@@ -19,4 +19,11 @@ class PosterMailer < ActionMailer::Base
     mail(:to => email, :subject => "poster changed")
   end
 
+  def poster_ready(poster)
+    email = poster.orderer.email
+    @poster = poster
+    @url = poster_url @poster
+    mail(:to => email, :subject => "poster changed")
+  end
+
 end
