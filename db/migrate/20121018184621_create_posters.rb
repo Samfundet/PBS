@@ -11,6 +11,7 @@ class CreatePosters < ActiveRecord::Migration
       t.string :status, :limit => 20
       t.datetime :send_to_press
       t.references :dimension
+      t.references :group
       t.integer :responsible_id
       t.integer :orderer_id
 

@@ -1,28 +1,11 @@
-/=form_for @poster do |p|
-/  %h3 Navn på plakat:
-/  =p.text_field :name
-/  %br
-/  %h3 Teksten du vil ha på plakaten:
-/  =p.text_area :poster_text
-/  %br
-/  %h3 Beskrivelse av plakaten:
-/  =p.text_area :description
-/  %br
-/  %h3 Vil du ha flyers?
-/  =p.check_box :flyers
-/  %br
-/  %h3 Vil du ha bannere?
-/  =p.check_box :banner
-/  %br
-/  =p.submit("Lag Plakat")
-/  %br
-/  =p.select :dimension
 =semantic_form_for @poster do |p|
-  =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
-  =p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
-  =p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
-  =p.input :specification, :hint => "Her kan du spesifisere antall, type ark, spesielle detaljer etc."
-  =p.input :flyers, :hint => "Huk av om du ønsker flyers i tillegg."
-  =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
-  =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene."
+  =p.inputs :name => "Poster" do
+    =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
+    =p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
+    =p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
+    =p.input :specification, :hint => "Her kan du spesifisere antall, type ark, spesielle detaljer etc."
+    =p.input :flyers, :hint => "Huk av om du ønsker flyers i tillegg."
+    =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
+    =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene."
+    =p.input :group, :hint => "Velg den gruppen som bestiller plakaten.", :collection => @poster.orderer.groups
   =p.actions :submit, :cancel

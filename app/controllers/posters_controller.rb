@@ -40,6 +40,7 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
+    @poster.orderer = @current_user
   end
 
   def cancel_poster
@@ -114,7 +115,7 @@ class PostersController < ApplicationController
 
   def set_current_user
     session[:member_id] = params[:id]
-    @current_user ||= Member.find(session[:member_id])
+    @current_user = Member.find(session[:member_id])
     flash[:success] = "Du er nå logget inn, #{@current_user.firstname} #{@current_user.surname}"
     redirect_to posters_path
   end
