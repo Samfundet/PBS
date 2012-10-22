@@ -9,21 +9,20 @@ class PosterMailer < ActionMailer::Base
     end
     @poster = poster
     @url = poster_url @poster
-    mail(:to => email, :subject => "poster changed")
+    mail(:to => email, :subject => "En plakat du har ansvaret for har blitt endret av bestiller.")
   end
 
   def poster_taken(poster)
     email = poster.orderer.email
     @poster = poster
     @url = poster_url @poster
-    mail(:to => email, :subject => "poster changed")
+    mail(:to => email, :subject => "Noen i Layout har påtatt seg å lage din plakat.")
   end
 
   def poster_ready(poster)
     email = poster.orderer.email
     @poster = poster
     @url = poster_url @poster
-    mail(:to => email, :subject => "poster changed")
+    mail(:to => email, :subject => "En av dine plakater er klar til henting")
   end
-
 end
