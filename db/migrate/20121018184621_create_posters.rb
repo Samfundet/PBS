@@ -10,6 +10,7 @@ class CreatePosters < ActiveRecord::Migration
       t.boolean :banner
       t.string :status, :limit => 20
       t.datetime :send_to_press
+      t.datetime :event_time
       t.references :dimension
       t.references :group
       t.integer :responsible_id

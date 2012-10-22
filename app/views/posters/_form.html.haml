@@ -8,4 +8,5 @@
     =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
     =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene."
     =p.input :group, :hint => "Velg den gruppen som bestiller plakaten.", :collection => @poster.orderer.groups
+    =p.input :event_time,:as => :string, :input_html => {  :class => "datetimepicker", :placeholder => "DD.MM.ÅÅÅÅ HH:MM" }
   =p.actions :submit, :cancel

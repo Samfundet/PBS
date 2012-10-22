@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20121018201930) do
     t.boolean  "banner"
     t.string   "status",         :limit => 20
     t.datetime "send_to_press"
+    t.datetime "event_time"
     t.integer  "dimension_id"
     t.integer  "group_id"
     t.integer  "responsible_id"
