@@ -1,0 +1,17 @@
+%div{:class=>"navbar"}
+  %div{:class=>"navbar-inner"}
+    %div{:class=>"btn-group"}
+      =link_to posters_path, {:class=>"btn"} do
+        Hjem
+      %a{:class=>"btn dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
+        Sorter etter
+        %span{:class=>"caret"}
+      %ul{:class=>"dropdown-menu"}
+        %li
+          =link_to "sist endret", params.merge(:sort => "updated_at")
+        %li
+          =link_to "navn", params.merge(:sort => "name")
+        %li
+          =link_to "stigende", params.merge(:order => "desc")
+        %li
+          =link_to "synkende", params.merge(:order => "asc")
