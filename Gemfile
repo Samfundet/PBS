@@ -21,6 +21,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "twitter-bootstrap-rails"
+
 gem 'jquery-rails'
 gem 'rb-readline'
 group :test do

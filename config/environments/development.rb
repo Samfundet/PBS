@@ -30,8 +30,8 @@ PbsLocalhostNo::Application.configure do
     :port           => 587,
     :domain         => 'samfundet.no',
     :authentication => :login,
-    :user_name      => 'insert google user here',
-    :password       => 'insert google login here'
+    :user_name      => 'mgweb.samfundet@gmail.com',
+    :password       => 'mgwebsamfundet'
   }
 
   # Print deprecation notices to the Rails logger
