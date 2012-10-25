@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PosterMailer < ActionMailer::Base
   default from: "from@example.com"
 
