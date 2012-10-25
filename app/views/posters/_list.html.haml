@@ -15,7 +15,7 @@
       - if t.status==:active
         %a= link_to "Arkiver", archive_poster_path(t), :method => :put
         %a= link_to "Avbestill", cancel_poster_path(t), :method => :put
-        %a= link_to "Ta jobben", :action => "take", :id => t
+        %a= link_to "Ta jobben", take_poster_path(t), :method => :put
       - if t.status==:archived or t.status==:canceled
         %a= link_to "Gjenopprett", restore_poster_path(t), :method => :put
 
