@@ -1,47 +1,53 @@
-%p
-  =link_to posters_path do
-    Tilbake
+=render 'navbar'
 
-%ul
-  %li
-    name:
+%div{:class => 'container'}
+  %h2
     = @poster.name
-  %li
-    Text for the poster:
+  %h3
+    Status: 
+    = @poster.status
+  %table{:class => 'table'}
+    %tr
+      %td
+        Bestiller: 
+      %td
+        = @poster.orderer
+      %td
+        Event: 
+      %td
+        = @poster.event
+    %tr
+      %td
+        Gruppe: 
+      %td
+        = @poster.group
+      %td
+        Dimensjon: 
+      %td
+        = @poster.dimension
+    %tr
+      %td
+        Annsvarlig: 
+      %td
+        = @poster.responsible
+      %td
+        Flyers: 
+      %td
+        = @poster.flyers
+    %tr
+      %td
+        Event tid: 
+      %td
+        = @poster.event_time
+      %td
+        Banners: 
+      %td
+        = @poster.banner
+  %span
+    Tekst på plakat:
+  %div{:class => 'well'}
     = @poster.poster_text
-  %li
-    Description:
+  %span
+    Beskrivelse:
+  %div{:class => 'well'}
     = @poster.description
-  %li
-    Specification:
-    = @poster.specification
-  %li
-    Should the poster have flyers:
-    = @poster.flyers
-  %li
-    Should the poster have banners:
-    = @poster.banner
-  %li
-    Is the poster sent to press:
-    = @poster.send_to_press
-  %li
-    Status for poster:
-    = @poster.status_string
-  %li
-    dimention:
-    = @poster.dimension
-  %li
-    Ansvarlig:
-    = @poster.responsible
-  %li
-    Bestiller:
-    = @poster.orderer
-  %li
-    Bestillende gruppe:
-    = @poster.group
-  %li
-    Tilhørende event:
-    = @poster.event
-  %li
-    Frist for at plakaten skal være ferdig:
-    = @poster.event_time
