@@ -7,6 +7,9 @@ class Poster < ActiveRecord::Base
   belongs_to :orderer, :class_name => 'Member', :foreign_key => :orderer_id
   belongs_to :event
 
+  validates :name, :group_id, :dimension_id, :presence => true
+
+
   @@STATUSES = {:active => 'Aktiv', :canceled => 'Avbestilt', :archived => 'Arkivert', :ready => 'Klar til henting', nil => 'Ikke satt'}
   validates_inclusion_of :status, :in => @@STATUSES.keys, :message => "Invalid poster status"
   validate :is_valid_date?
