@@ -13,6 +13,7 @@ class CreatePosters < ActiveRecord::Migration
       t.datetime :event_time
       t.references :dimension
       t.references :group
+      t.references :event
       t.integer :responsible_id
       t.integer :orderer_id
 

@@ -7,7 +7,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-number_of_members = 50
+julaften = Event.create!(
+    :name => "Julaften",
+    :time => DateTime.new(2012,12,24)
+)
+
+halloween = Event.create!(
+    :name => "halloween",
+    :time => DateTime.new(2012,10,31)
+)
+
+Nightwish = Event.create!(
+    :name => "nightwish",
+    :time => DateTime.new(2012,11,9)
+)
+
+meshuggah = Event.create!(
+    :name => "meshuggah",
+    :time => DateTime.new(2012,11,19)
+)
 
 layout = Group.create!(
   :name => "Layout"
@@ -59,7 +77,7 @@ member = Member.create!(
     :password => 'passord',
     :groups => [layout, regi],
 )
-
+number_of_members = 50
 prng = Random.new
 puts "Creating members"
 number_of_members.times do |member_number|
