@@ -11,7 +11,7 @@
           =link_to "sist endret", params.merge(:sort => "updated_at")
         %li
           =link_to "navn", params.merge(:sort => "name")
-        %li
-          =link_to "stigende", params.merge(:order => "desc")
-        %li
-          =link_to "synkende", params.merge(:order => "asc")
+      - if params[:order]=="asc"
+        =link_to '<i class="icon-chevron-up"></i>'.html_safe, params.merge(:order => "desc"), {:class=>"btn"}
+      - else
+        =link_to '<i class="icon-chevron-down"></i>'.html_safe, params.merge(:order => "asc"), {:class=>"btn"}
