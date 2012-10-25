@@ -18,4 +18,3 @@
         %a= link_to "Ta jobben", take_poster_path(t), :method => :put
       - if t.status==:archived or t.status==:canceled
         %a= link_to "Gjenopprett", restore_poster_path(t), :method => :put
-

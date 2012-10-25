@@ -128,17 +128,4 @@ class PostersController < ApplicationController
   def sort_order
     ['asc', 'desc'].include?(params[:order]) ? params[:order] : 'desc'
   end
-
-  def ready_poster
-    poster = Poster.find(params[:id])
-    poster.status = :ready
-    PosterMailer.poster_ready(poster).deliver
-    if poster.save
-      flash[:success] = "Bestiller er varslet om at plakaten er klar til henting."
-      redirect_to posters_path
-    else
-      flash[:error] = "Noe gikk galt, bestiller er inne varslet om at plakaten er klar til henting."
-      redirect_to posters_path
-    end
-  end
 end

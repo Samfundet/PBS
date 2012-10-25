@@ -6,11 +6,11 @@ class Poster < ActiveRecord::Base
   belongs_to :responsible, :class_name => 'Member', :foreign_key => :responsible_id
   belongs_to :orderer, :class_name => 'Member', :foreign_key => :orderer_id
 
-  @@STATUSES = {:active => 'Aktiv', :canceled => 'Avbestilt', :archived => 'Arkivert', :ready => 'Klar til henting', nil => 'Ikke satt'}
+  @@STATUSES = {:active => 'Aktiv', :canceled => 'Avbestilt', :archived => 'Arkivert', nil => 'Ikke satt'}
   validates_inclusion_of :status, :in => @@STATUSES.keys, :message => "Invalid poster status"
   validate :is_valid_date?
 
-  scope :active, where('status = "active" OR status = "ready"')
+  scope :active, where('status = "active"')
 
   def status
     field = read_attribute(:status)

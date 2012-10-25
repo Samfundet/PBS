@@ -19,11 +19,4 @@ class PosterMailer < ActionMailer::Base
     @url = poster_url @poster
     mail(:to => email, :subject => "Noen i Layout har påtatt seg å lage din plakat.")
   end
-
-  def poster_ready(poster)
-    email = poster.orderer.email
-    @poster = poster
-    @url = poster_url @poster
-    mail(:to => email, :subject => "En av dine plakater er klar til henting")
-  end
 end
