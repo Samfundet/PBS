@@ -8,6 +8,7 @@ class Poster < ActiveRecord::Base
   belongs_to :event
 
   validates :name, :group_id, :dimension_id, :presence => true
+  validates_associated :group, :dimension
 
 
   @@STATUSES = {:active => 'Aktiv', :canceled => 'Avbestilt', :archived => 'Arkivert', nil => 'Ikke satt'}
