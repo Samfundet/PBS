@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :current_user
+  before_filter :set_locale
 
   def current_user
     if session[:member_id]
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
       rescue
         end
     end
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 
 end

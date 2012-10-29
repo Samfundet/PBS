@@ -1,0 +1,30 @@
+'no':
+  time:
+    formats:
+      short_datetime: "%d.%m.%y"
+      long_datetime:  "%d.%m.%y %H:%M"
+  activerecord:
+    errors:
+      messages:
+        blank: "Dette feltet kan ikke være blankt."
+    models:
+      poster: "plakat"
+    attributes:
+        poster:
+            name: "Navn på plakat"
+            poster_text: "Tekst som skal på plakaten"
+            description: "Beskrivelse"
+            specification: "Kommentarer og spesifikasjoner"
+            dimension: "Ønsket dimensjon"
+            group: "Gjeng"
+            event: "Arrangement"
+            event_time: "Arrangement tid"
+  formtastic:
+    :yes: "Ja"
+    :no: "Nei"
+    create: "Opprett plakat"
+    save: "Lagre"
+    update: "Oppdater plakat"
+    submit: "Send"
+    cancel: "Avbryt"
+    required: "Påkrevd"

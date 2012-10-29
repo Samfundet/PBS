@@ -5,7 +5,7 @@
     = @poster.name
   %h3
     Status: 
-    = @poster.status
+    = @poster.status_string
   %table{:class => 'table'}
     %tr
       %td
@@ -38,7 +38,7 @@
       %td
         Event tid: 
       %td
-        = @poster.event_time
+        = l @poster.event_time, :format => :long_datetime
       %td
         Banners: 
       %td
