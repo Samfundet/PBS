@@ -1,8 +1,20 @@
 %div{:class=>"navbar"}
   %div{:class=>"navbar-inner"}
+    %div{:class=>"brand"}
+      Plakat Bestillings System
     %div{:class=>"btn-group"}
-      =link_to posters_path, {:class=>"btn"} do
-        Hjem
+      =link_to '<i class="icon-home"></i>'.html_safe, posters_path, {:class=>"btn", :title=>"Hjem"}
+
+
+      - if params[:order]=="asc"
+        =link_to '<i class="icon-arrow-up"></i>'.html_safe, params.merge(:order => "desc"), {:class=>"btn", :title=>"Sorter synkende"}
+      - else
+        =link_to '<i class="icon-arrow-down"></i>'.html_safe, params.merge(:order => "asc"), {:class=>"btn", :title=>"Sorter stigende"}
+      =link_to '<i class="icon-plus"></i>'.html_safe, {:action=>"new"}, {:class=>"btn", :title=>"Lag ny plakat"}
+      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_posters_path, {:class=>"btn", :title=>"Gå til arkiv"}
+      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"}
+      =link_to '<i class="icon-heart"></i>'.html_safe, take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"}
+      =link_to '<i class="icon-shopping-cart"></i>'.html_safe, order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"}
       %a{:class=>"btn dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
         Sorter etter
         %span{:class=>"caret"}
@@ -11,7 +23,3 @@
           =link_to "sist endret", params.merge(:sort => "updated_at")
         %li
           =link_to "navn", params.merge(:sort => "name")
-      - if params[:order]=="asc"
-        =link_to '<i class="icon-chevron-up"></i>'.html_safe, params.merge(:order => "desc"), {:class=>"btn"}
-      - else
-        =link_to '<i class="icon-chevron-down"></i>'.html_safe, params.merge(:order => "asc"), {:class=>"btn"}

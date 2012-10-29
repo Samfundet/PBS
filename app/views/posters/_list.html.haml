@@ -2,17 +2,19 @@
   - @posters.each do |t|
 
     %li
-      %div{:class=>'well'}
-        %h3
-          = t.name
-        %p
-          =t.description
-        %a= link_to "Vis", t
-        %a= link_to "Rediger", :action => "edit", :id => t
-        %a= link_to "Slett", t,:confirmation => "Are you sure?", :method => :delete
-        - if t.status==:active
-          %a= link_to "Arkiver", archive_poster_path(t), :method => :put
-          %a= link_to "Avbestill", cancel_poster_path(t), :method => :put
-          %a= link_to "Ta jobben", take_poster_path(t), :method => :put
-        - if t.status==:archived or t.status==:canceled
-          %a= link_to "Gjenopprett", restore_poster_path(t), :method => :put
+      %div{:class=>'well',:style=>''}
+        %div{:class=>'list_text'}
+          %div{:class=>'list_buttons'}
+            - if t.status==:active
+              =link_to '<i class="icon-edit"></i>'.html_safe, edit_poster_path(t), {:class=>"btn", :title=>"Rediger"}
+              =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_poster_path(t), {:method => :put, :class=>"btn", :title=>"Arkiver"}
+              =link_to '<i class="icon-remove"></i>'.html_safe, cancel_poster_path(t), {:method => :put, :class=>"btn", :title=>"Avbestill"}
+              =link_to '<i class="icon-heart"></i>'.html_safe, take_poster_path(t), {:method => :put, :class=>"btn", :title=>"Ta jobben"}
+            - if t.status==:archived or t.status==:canceled
+              =link_to '<i class="icon-repeat"></i>'.html_safe, restore_poster_path(t), {:method => :put, :class=>"btn", :title=>"Gjenopprett"}
+            =link_to '<i class="icon-warning-sign"></i>'.html_safe, t, {:method=>:delete, :class=>"btn", :title=>"Slett"}
+          %h3
+            %a= link_to t.name, t
+          %p
+            =t.description
+

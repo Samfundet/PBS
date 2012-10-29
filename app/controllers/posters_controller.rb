@@ -59,11 +59,11 @@ class PostersController < ApplicationController
   end
 
   def order
-    @posters = Poster.where(:orderer_id => @current_user.id).order('updated_at DESC')
+    @posters = Poster.where(:orderer_id => @current_user.id).order("#{sort_column} #{sort_order}")
   end
 
   def take
-    @posters = Poster.where(:responsible_id => @current_user.id).order('updated_at DESC')
+    @posters = Poster.where(:responsible_id => @current_user.id).order("#{sort_column} #{sort_order}")
   end
 
   def take_poster
