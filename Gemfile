@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'haml-rails'
 gem 'formtastic'
+gem 'paperclip'
 gem 'rails-translate-routes'
 
 # Gems used only for assets and not required
