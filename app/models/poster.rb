@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
 class Poster < ActiveRecord::Base
   attr_accessible :name, :poster_text, :description, :flyers, :banner, :send_to_press, :event_time, :dimension_id, :responsible_id, :orderer_id, :status, :group_id, :event_id, :area_id
-	belongs_to :dimension
+  belongs_to :dimension
   belongs_to :group
   belongs_to :area
   belongs_to :responsible, :class_name => 'Member', :foreign_key => :responsible_id
   belongs_to :orderer, :class_name => 'Member', :foreign_key => :orderer_id
   belongs_to :event
+  belongs_to :attachment
+  has_attached_file :file, :styles => { :thumb=> "100x100#", :small  => "300x300>", :large => "600x600>" }
 
   validates :name, :group_id, :dimension_id, :presence => true
   validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt"}
