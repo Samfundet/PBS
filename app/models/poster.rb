@@ -32,7 +32,7 @@ class Poster < ActiveRecord::Base
 
   private
   def is_valid_date?
-    if !((event_time.to_i - 21*60*60*24) > DateTime.now.to_i)
+    if !((event_time.to_i - 21*60*60*24) > DateTime.now.to_i) && new_record?
       errors.add(:event_time, "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt")
     end
   end

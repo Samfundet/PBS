@@ -8,11 +8,11 @@ class DimensionsController < ApplicationController
     @dim = Dimension.new(params[:dimension])
     if @dim.save
       flash[:success] = "Dimensjonen er laget."
+      redirect_to dimensions_path
     else
       flash[:error] = "Vennligst fyll ut alle felter."
-      render :action => 'new'
+      redirect_to new_dimension_path(@dim)
     end
-    redirect_to dimensions_path
   end
 
 
@@ -32,7 +32,7 @@ class DimensionsController < ApplicationController
     @dim = Dimension.find(params[:id])
     @dim.text = params[:dimension][:text]
     @dim.save
-    redirect_to :action => 'show', :id => @dim
+    redirect_to dimension_path(@dim)
   end
 
 	def destroy

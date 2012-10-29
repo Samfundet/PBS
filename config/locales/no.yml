@@ -9,6 +9,7 @@
         blank: "Dette feltet kan ikke være blankt."
     models:
       poster: "plakat"
+      dimension: "Dimensjon"
     attributes:
         poster:
             name: "Navn på plakat"
@@ -19,12 +20,15 @@
             group: "Gjeng"
             event: "Arrangement"
             event_time: "Arrangement tid"
+        dimension:
+            text: "Dimensjon (123x456 f.eks)"
+
   formtastic:
     :yes: "Ja"
     :no: "Nei"
-    create: "Opprett plakat"
+    create: "Opprett %{model}"
     save: "Lagre"
-    update: "Oppdater plakat"
+    update: "Oppdater %{model}"
     submit: "Send"
     cancel: "Avbryt"
     required: "Påkrevd"
