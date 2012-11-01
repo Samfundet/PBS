@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022200106) do
+ActiveRecord::Schema.define(:version => 20121029203544) do
+
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "dimensions", :force => true do |t|
     t.string  "text"
@@ -25,15 +32,23 @@ ActiveRecord::Schema.define(:version => 20121022200106) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "group_types", :force => true do |t|
+    t.string   "description",                :null => false
+    t.integer  "priority",    :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
-  create_table "groups_members", :id => false, :force => true do |t|
-    t.integer "member_id"
-    t.integer "group_id"
+  create_table "groups", :force => true do |t|
+    t.string   "name",              :null => false
+    t.string   "abbreviation"
+    t.text     "description",       :null => false
+    t.string   "website"
+    t.text     "short_description", :null => false
+    t.text     "long_description",  :null => false
+    t.integer  "group_type_id",     :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "members", :primary_key => "medlem_id", :force => true do |t|
@@ -57,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20121022200106) do
     t.integer  "dimension_id"
     t.integer  "group_id"
     t.integer  "event_id"
+    t.integer  "area_id"
     t.integer  "responsible_id"
     t.integer  "orderer_id"
     t.datetime "created_at",                   :null => false

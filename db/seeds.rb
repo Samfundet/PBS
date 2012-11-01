@@ -27,29 +27,40 @@ meshuggah = Event.create!(
     :time => DateTime.new(2012,11,19)
 )
 
-layout = Group.create!(
-  :name => "Layout"
-)
-ksg = Group.create!(
-  :name => "KSG"
-)
-ark = Group.create!(
-  :name => "ARK"
-)
-mg = Group.create!(
-  :name => "MG"
-)
-regi = Group.create!(
-  :name => "Regi"
-)
-fg = Group.create!(
-  :name => "FG"
-)
-sit = Group.create!(
-  :name => "SIT"
+driftende = GroupType.create!(
+  :description=>"driftende",
+  :priority=>1
 )
 
+layout = Group.new :name=>"Layout"
+ksg = Group.new :name=>"KSG"
+ark = Group.new :name=>"ARK"
+mg = Group.new :name=>"MG"
+regi = Group.new :name=>"Regi"
+fg = Group.new :name=>"FG"
+sit = Group.new :name=>"SIT"
+
 groups = [ksg, ark, mg, regi, fg, sit]
+
+groups.each do |g|
+  g.description = "test"
+  g.short_description = "kort test"
+  g.long_description = "lang test"
+  g.group_type = driftende
+  g.save!
+end
+
+storsalen = Area.new :name=>"Storsalen"
+edgar = Area.new :name=>"Edgar"
+strossa = Area.new :name=>"Strossa"
+selskapssiden = Area.new :name=>"Selskapssiden"
+
+areas = [storsalen, edgar, strossa, selskapssiden]
+
+areas.each do |a|
+  a.description = "test"
+  a.save!
+end
 
 member = Member.create!(
     :firstname => "Sondre",
@@ -57,7 +68,6 @@ member = Member.create!(
     :phone => (10000000 + rand * 9000000).to_i.to_s,
     :email => "sondre1504@gmail.com",
     :password => 'passord',
-    :groups => [layout, ark],
 )
 
 member = Member.create!(
@@ -66,7 +76,6 @@ member = Member.create!(
     :phone => (10000000 + rand * 9000000).to_i.to_s,
     :email => "mlysgaard@gmail.com",
     :password => 'passord',
-    :groups => [layout, ksg],
 )
 
 member = Member.create!(
@@ -75,11 +84,8 @@ member = Member.create!(
     :phone => (10000000 + rand * 9000000).to_i.to_s,
     :email => "raane.holm@gmail.com",
     :password => 'passord',
-    :groups => [layout, regi],
 )
 number_of_members = 50
-prng = Random.new
-puts "Creating members"
 number_of_members.times do |member_number|
   member = Member.create!(
       :firstname => Faker::Name.first_name,
@@ -87,7 +93,6 @@ number_of_members.times do |member_number|
       :phone => (10000000 + rand * 9000000).to_i.to_s,
       :email => Faker::Internet.free_email,
       :password => 'passord',
-      :groups => groups.sample(prng.rand(1..3)),
   )
   puts member.firstname + " " + member.surname + " " + member.id.to_i.to_s
 end

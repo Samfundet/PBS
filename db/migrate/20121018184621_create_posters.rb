@@ -14,6 +14,7 @@ class CreatePosters < ActiveRecord::Migration
       t.references :dimension
       t.references :group
       t.references :event
+      t.references :area
       t.integer :responsible_id
       t.integer :orderer_id
 
