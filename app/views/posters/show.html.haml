@@ -39,7 +39,7 @@
         = @poster.dimension
     %tr
       %td
-        Annsvarlig: 
+        Ansvarlig:
       %td
         -if @poster.responsible
           =@poster.responsible.full_name
@@ -56,6 +56,11 @@
         Banners: 
       %td
         = @poster.banner
+    %tr
+      %td
+        Sted:
+      %td
+        =@poster.area
   %span
     Tekst på plakat:
   %div{:class => 'well'}
