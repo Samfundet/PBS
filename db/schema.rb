@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20121029203544) do
     t.string   "name"
     t.text     "poster_text"
     t.text     "description"
-    t.text     "specification"
     t.boolean  "flyers"
     t.boolean  "banner"
     t.string   "status",         :limit => 20

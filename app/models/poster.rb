@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Poster < ActiveRecord::Base
-  attr_accessible :name, :poster_text, :description, :specification, :flyers, :banner, :send_to_press, :event_time, :dimension_id, :responsible_id, :orderer_id, :status, :group_id, :event_id
+  attr_accessible :name, :poster_text, :description, :flyers, :banner, :send_to_press, :event_time, :dimension_id, :responsible_id, :orderer_id, :status, :group_id, :event_id, :area_id
 	belongs_to :dimension
   belongs_to :group
   belongs_to :area
