@@ -23,6 +23,8 @@ end
 
 gem "twitter-bootstrap-rails"
 
+# SamfundetAuth is a gem which provides the application with methods for authenticating against mdb2.
+gem 'samfundet_auth', :git=>"git://github.com/Samfundet/SamfundetAuth.git"
 gem 'samfundet_domain', :git => "git://github.com/Samfundet/SamfundetDomain.git"
 
 gem 'date_validator'
