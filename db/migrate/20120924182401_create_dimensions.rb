@@ -3,6 +3,7 @@ class CreateDimensions < ActiveRecord::Migration
   def up
     create_table :dimensions do |d|
       d.string :text
+      d.boolean :status
     end
   end
 

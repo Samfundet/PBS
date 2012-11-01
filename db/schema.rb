@@ -14,7 +14,8 @@
 ActiveRecord::Schema.define(:version => 20121022200106) do
 
   create_table "dimensions", :force => true do |t|
-    t.string "text"
+    t.string  "text"
+    t.boolean "status"
   end
 
   create_table "events", :force => true do |t|

@@ -50,7 +50,10 @@ PbsLocalhostNo::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  resources :dimensions
+  resources :dimensions do
+    put :archive, :on => :member, :action => "archive_dimension"
+    put :restore, :on => :member, :action => "restore"
+  end
   resources :posters do
     put :restore, :on => :member, :action => "restore"
     put :archive, :on => :member, :action => "archive_poster"

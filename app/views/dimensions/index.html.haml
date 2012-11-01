@@ -2,7 +2,11 @@
   - @dims.each do |t|
     %li
       %span #{t.id}: #{t.text}
-      %a= link_to "show", t
       %a= link_to "edit", :action => "edit", :id => t
-      %a= link_to "delete", t,:confirmation => "Are you sure?", :method => :delete
+      -if t.status
+        %a= link_to "Arkiver", archive_dimension_path(t), :method => :put
+      -else
+        %a= link_to "Gjenopprett", restore_dimension_path(t), :method => :put
+
+
 %a= link_to "new", :action => "new"

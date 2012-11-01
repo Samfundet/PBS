@@ -7,6 +7,8 @@
     errors:
       messages:
         blank: "Dette feltet kan ikke være blankt."
+        record_invalid: "Dette feltet er ikke gyldig"
+        invalid: "Dette feltet er ikke gyldig"
     models:
       poster: "plakat"
       dimension: "Dimensjon"

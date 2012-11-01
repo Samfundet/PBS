@@ -6,6 +6,7 @@ class DimensionsController < ApplicationController
 
   def create
     @dim = Dimension.new(params[:dimension])
+    @dim.status = true
     if @dim.save
       flash[:success] = "Dimensjonen er laget."
       redirect_to dimensions_path
@@ -17,7 +18,7 @@ class DimensionsController < ApplicationController
 
 
 	def index
-		@dims = Dimension.all
+    @dims = Dimension.all
 	end
 
   def show
@@ -32,13 +33,31 @@ class DimensionsController < ApplicationController
     @dim = Dimension.find(params[:id])
     @dim.text = params[:dimension][:text]
     @dim.save
-    redirect_to dimension_path(@dim)
+    redirect_to dimensions_path
+  end
+
+  def archive_dimension
+    dim = Dimension.find(params[:id])
+    dim.status = false
+    if dim.save
+      flash[:success] = "Dimensjonen er arkivert."
+      redirect_to dimensions_path
+    else
+      flash[:error]  = "Noe gikk galt, dimensjonen er ikke arkivert"
+    end
+  end
+
+  def restore
+    dim = Dimension.find(params[:id])
+    dim.status = true
+    if dim.save
+      flash[:success] = "Dimensjonen er gjenopprettet."
+      redirect_to dimensions_path
+    else
+      flash[:error] = "Noe gikk galt, dimensjonen er ikke gjenopprettet."
+    end
   end
 
 	def destroy
-		@dim = Dimension.find(params[:id])
-		@dim.destroy
-    flash[:success] = "You have deleted #{@dim.text} med id: #{@dim.id}"
-    redirect_to dimensions_path
 	end
 end

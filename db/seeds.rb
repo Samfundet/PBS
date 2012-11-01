@@ -96,7 +96,8 @@ puts "Creating dimensions"
 number_of_dimensions = 10
 number_of_dimensions.times do |dimension_number|
   dimension = Dimension.create!(
-     :text => ((100 + rand * 900).to_i.to_s + "x" + (100 + rand * 900).to_i.to_s)
+     :text => ((100 + rand * 900).to_i.to_s + "x" + (100 + rand * 900).to_i.to_s),
+     :status => true
   )
   puts dimension.text
 end
