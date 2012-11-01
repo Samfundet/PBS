@@ -3,9 +3,20 @@
 %div{:class => 'container'}
   %h2
     = @poster.name
+
+  %div{:class=>"list_buttons"}
+    - if @poster.status==:active
+      =link_to '<i class="icon-edit"></i>'.html_safe, edit_poster_path(@poster), {:class=>"btn", :title=>"Rediger"}
+      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Arkiver"}
+      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Avbestill"}
+      =link_to '<i class="icon-heart"></i>'.html_safe, take_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Ta jobben"}
+    - if @poster.status==:archived or @poster.status==:canceled
+      =link_to '<i class="icon-repeat"></i>'.html_safe, restore_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Gjenopprett"}
+    =link_to '<i class="icon-warning-sign"></i>'.html_safe, @poster, {:method=>:delete, :class=>"btn", :title=>"Slett"}
   %h3
     Status: 
     = @poster.status_string
+
   %table{:class => 'table'}
     %tr
       %td
