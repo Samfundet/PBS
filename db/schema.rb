@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20121101222223) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "assets", :force => true do |t|
+    t.integer  "poster_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "dimensions", :force => true do |t|
     t.string  "text"
     t.boolean "status"

@@ -20,6 +20,7 @@ class PostersController < ApplicationController
 
   def edit
     @poster = Poster.find(params[:id])
+    5.times {@poster.assets.build}
   end
 
   def update
@@ -41,6 +42,9 @@ class PostersController < ApplicationController
   def new
     @poster = Poster.new
     @poster.orderer = @current_user
+    5.times {
+      @poster.assets.build
+    }
   end
 
   def cancel_poster
