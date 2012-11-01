@@ -5,7 +5,7 @@
     =p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
     =p.input :flyers, :hint => "Huk av om du ønsker flyers i tillegg."
     =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
-    =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene."
+    =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene.", :collection => Dimension.where(:status => true)
     =p.input :group, :hint => "Velg den gruppen som bestiller plakaten."
     =p.input :event, :hint => "Velg et event plakaten tilhører(valgfritt).", :collection => Event.all
     =p.input :area, :hint => "Velg sted denne eventen skjer."
