@@ -9,12 +9,12 @@ class Poster < ActiveRecord::Base
   belongs_to :event
 
   validates :name, :group_id, :dimension_id, :presence => true
+  validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt"}
   validates_associated :group, :dimension
 
 
   @@STATUSES = {:active => 'Aktiv', :canceled => 'Avbestilt', :archived => 'Arkivert', nil => 'Ikke satt'}
   validates_inclusion_of :status, :in => @@STATUSES.keys, :message => "Invalid poster status"
-  validate :is_valid_date?
 
   scope :active, where('status = "active"')
 
@@ -30,13 +30,6 @@ class Poster < ActiveRecord::Base
 
   def status_string
     @@STATUSES[status]
-  end
-
-  private
-  def is_valid_date?
-    if !((event_time.to_i - 21*60*60*24) > DateTime.now.to_i) && new_record?
-      errors.add(:event_time, "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt")
-    end
   end
 
 end

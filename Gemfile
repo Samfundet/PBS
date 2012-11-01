@@ -22,10 +22,15 @@ group :assets do
 end
 
 gem "twitter-bootstrap-rails"
+
 gem 'samfundet_domain', :git => "git://github.com/Samfundet/SamfundetDomain.git"
 
+gem 'date_validator'
+
 gem 'jquery-rails'
+
 gem 'rb-readline'
+
 group :test do
   gem 'sqlite3'
   gem 'cucumber'
