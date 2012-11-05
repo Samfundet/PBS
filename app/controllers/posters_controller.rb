@@ -113,13 +113,6 @@ class PostersController < ApplicationController
     end
   end
 
-  def set_current_user
-    session[:member_id] = params[:id]
-    @current_user = Member.find(session[:member_id])
-    flash[:success] = "Du er nå logget inn, #{@current_user.firstname} #{@current_user.surname}"
-    redirect_to posters_path
-  end
-
   private 
   def sort_column
     Poster.column_names.include?(params[:sort]) ? params[:sort] : 'updated_at'

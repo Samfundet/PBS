@@ -1,6 +1,6 @@
 %html
   %body
-    %h2 #{@poster.responsible.firstname} #{@poster.responsible.surname} har tatt annsvar for plakaten #{@poster.name}.
+    %h2 #{@poster.responsible.full_name} har tatt annsvar for plakaten #{@poster.name}.
     %p
       Du er registrert som bestiller på denne plakaten. For å se bestillingen og framgangen kan du trykke
       = link_to 'HER', @url

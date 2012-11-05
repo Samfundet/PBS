@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029203544) do
+ActiveRecord::Schema.define(:version => 20121101222223) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -42,21 +42,25 @@ ActiveRecord::Schema.define(:version => 20121029203544) do
   create_table "groups", :force => true do |t|
     t.string   "name",              :null => false
     t.string   "abbreviation"
-    t.text     "description",       :null => false
     t.string   "website"
-    t.text     "short_description", :null => false
-    t.text     "long_description",  :null => false
+    t.text     "short_description"
+    t.text     "long_description"
     t.integer  "group_type_id",     :null => false
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
 
   create_table "members", :primary_key => "medlem_id", :force => true do |t|
-    t.string "firstname"
-    t.string "surname"
-    t.string "email"
-    t.string "phone"
-    t.string "password"
+    t.string "fornavn"
+    t.string "etternavn"
+    t.string "mail"
+    t.string "telefon"
+    t.string "passord"
+  end
+
+  create_table "members_roles", :force => true do |t|
+    t.integer "member_id"
+    t.integer "role_id"
   end
 
   create_table "posters", :force => true do |t|
@@ -76,6 +80,17 @@ ActiveRecord::Schema.define(:version => 20121029203544) do
     t.integer  "orderer_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "show_in_hierarchy", :default => false
+    t.integer  "role_id"
+    t.integer  "group_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
 end

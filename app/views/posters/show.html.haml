@@ -22,7 +22,8 @@
       %td
         Bestiller: 
       %td
-        = @poster.orderer
+        -if @poster.orderer
+          =@poster.orderer.full_name
       %td
         Event: 
       %td
@@ -40,7 +41,8 @@
       %td
         Annsvarlig: 
       %td
-        = @poster.responsible
+        -if @poster.responsible
+          =@poster.responsible.full_name
       %td
         Flyers: 
       %td

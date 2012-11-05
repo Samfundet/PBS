@@ -6,7 +6,7 @@ class PosterMailer < ActionMailer::Base
     if poster.responsible == nil
       email = 'mlysgaard@gmail.com' # change to the default mail
     else
-      email = poster.responsible.email
+      email = poster.responsible.mail
     end
     @poster = poster
     @url = poster_url @poster
@@ -14,7 +14,7 @@ class PosterMailer < ActionMailer::Base
   end
 
   def poster_taken(poster)
-    email = poster.orderer.email
+    email = poster.orderer.mail
     @poster = poster
     @url = poster_url @poster
     mail(:to => email, :subject => "Noen i Layout har påtatt seg å lage din plakat.")
