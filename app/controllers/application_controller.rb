@@ -13,9 +13,11 @@ class ApplicationController < ActionController::Base
     if session[:member_id]
       begin
         @current_user ||= Member.find session[:member_id]
-        flash[:success] = "Du er logget inn som #{@current_user.firstname} #{@current_user.surname}"
-        puts @current_user.role_symbols
+        flash[:success] = "Du er logget inn som #{@current_user.fornavn} #{@current_user.etternavn}"
+        @current_user
       rescue
+        flash[:error] = "Feil under innlogging."
+        @current_user
       end
     end
   end

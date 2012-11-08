@@ -67,7 +67,7 @@ PbsLocalhostNo::Application.routes.draw do
   root :to => 'posters#index'
   match '/login', :to=>'sessions#new', :via=>:get
   match '/login', :to=>'sessions#create', :via=>:post
-  match '/logout', :to=>'sessions#destroy', :via=>:post
+  match '/logout', :to=>'sessions#destroy', :via=>:get
 
   # See how all your routes lay out with "rake routes"
 
