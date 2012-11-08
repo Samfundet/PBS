@@ -69,3 +69,10 @@
     Beskrivelse:
   %div{:class => 'well'}
     = @poster.description
+  %span
+    Vedlagte filer:
+  %div{:class => 'well'}
+    %ul
+      - @poster.assets.each do |asset|
+        %li
+          =asset.image_file_name

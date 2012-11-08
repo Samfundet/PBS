@@ -7,8 +7,8 @@ class Poster < ActiveRecord::Base
   belongs_to :responsible, :class_name => 'Member', :foreign_key => :responsible_id
   belongs_to :orderer, :class_name => 'Member', :foreign_key => :orderer_id
   belongs_to :event
-  has_many :assets
-  accepts_nested_attributes_for :assets
+  has_many :assets, :dependent => :destroy
+  accepts_nested_attributes_for :assets, :allow_destroy => true
 
   validates :name, :group_id, :dimension_id, :presence => true
   validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt"}

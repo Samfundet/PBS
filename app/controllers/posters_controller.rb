@@ -9,6 +9,7 @@ class PostersController < ApplicationController
     @poster = Poster.new(params[:poster])
     @poster.orderer = @current_user
     @poster.status = :active
+    @poster.assets
     if @poster.save
       flash[:success] = "Plakaten er laget."
       redirect_to posters_path

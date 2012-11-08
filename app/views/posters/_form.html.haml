@@ -7,7 +7,6 @@
     =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
     =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene.", :collection => Dimension.where(:status => true)
     =p.input :group, :hint => "Velg den gruppen som bestiller plakaten."
-    =p.file_field :picture, :hint => "Last opp filer tilhørende plakaten (max filstørrelse er 50 MB)."
     =p.input :event, :hint => "Velg et event plakaten tilhører(valgfritt).", :collection => Event.all
     =p.input :area, :hint => "Velg sted denne eventen skjer."
     =p.input :event_time,:as => :string, :input_html => {  :class => "datetimepicker", :placeholder => "DD.MM.ÅÅÅÅ HH:MM"}
@@ -16,7 +15,10 @@
       Last opp filer tilhørende plakaten (max filstørrelse er 50 MB).
     =p.fields_for :assets do |asset|
       %p
+        -unless asset.object.new_record?
+          = link_to( image_tag(asset.object.image.url(:thumb)), asset.object.image.url(:original) )
+          = asset.check_box :_destroy
         -if asset.object.new_record?
-          =asset.file_field :image
+          = asset.file_field :image
 
     =p.actions :submit, :cancel
