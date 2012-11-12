@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class PostersController < ApplicationController
+  filter_access_to [:edit, :update, :cancel_poster, :archive_poster, :restore], :attribute_check=>true
 
   def index
     @posters = Poster.where(:status => :active).order("#{sort_column} #{sort_order}")

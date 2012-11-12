@@ -1,3 +1,5 @@
+- content_for :title, 'Vis Plakat'
+
 =render 'navbar'
 
 %div{:class => 'container'}
@@ -6,13 +8,13 @@
 
   %div{:class=>"list_buttons"}
     - if @poster.status==:active
-      =link_to '<i class="icon-edit"></i>'.html_safe, edit_poster_path(@poster), {:class=>"btn", :title=>"Rediger"}
-      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Arkiver"}
-      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Avbestill"}
-      =link_to '<i class="icon-heart"></i>'.html_safe, take_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Ta jobben"}
+      =link_to '<i class="icon-edit"></i>'.html_safe, edit_poster_path(@poster), {:class=>"btn", :title=>"Rediger"} if permitted_to? :edit, @poster
+      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Arkiver"} if permitted_to? :archive, @poster
+      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Avbestill"} if permitted_to? :cancel, @poster
+      =link_to '<i class="icon-heart"></i>'.html_safe, take_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Ta jobben"} if permitted_to? :take, @poster
     - if @poster.status==:archived or @poster.status==:canceled
-      =link_to '<i class="icon-repeat"></i>'.html_safe, restore_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Gjenopprett"}
-    =link_to '<i class="icon-warning-sign"></i>'.html_safe, @poster, {:method=>:delete, :class=>"btn", :title=>"Slett"}
+      =link_to '<i class="icon-repeat"></i>'.html_safe, restore_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Gjenopprett"} if permitted_to? :restore, @poster
+    =link_to '<i class="icon-warning-sign"></i>'.html_safe, @poster, {:method=>:delete, :class=>"btn", :title=>"Slett"} if permitted_to? :destroy, @poster
   %h3
     Status: 
     = @poster.status_string
