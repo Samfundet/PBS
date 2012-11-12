@@ -21,7 +21,7 @@ class PostersController < ApplicationController
 
   def edit
     @poster = Poster.find(params[:id])
-    5.times {@poster.assets.build}
+    25.times {@poster.assets.build}
   end
 
   def update
