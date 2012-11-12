@@ -77,4 +77,5 @@
     %ul
       - @poster.assets.each do |asset|
         %li
-          =asset.image_file_name
+          = link_to( image_tag(asset.image.url(:thumb)), asset.image.url(:original) )
+          = asset.image_file_name
