@@ -21,5 +21,6 @@ authorization do
   role :lim_web do
     includes :medlem
     has_permission_on :posters, :to => [:edit, :update, :cancel, :restore, :take, :take_poster, :archive, :archive_poster, :destroy]
+    has_permission_on :dimensions, :to => [:new, :create, :index, :show, :edit, :update, :archive_dimension, :restore]
   end
 end
