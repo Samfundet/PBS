@@ -11,7 +11,7 @@
               =link_to '<i class="icon-remove"></i>'.html_safe, cancel_poster_path(t) , {:method => :put, :class=>"btn", :title=>"Avbestill"} if permitted_to? :cancel, t
               =link_to '<i class="icon-heart"></i>'.html_safe, take_poster_path(t) , {:method => :put, :class=>"btn", :title=>"Ta jobben"} if permitted_to? :take, t
             - if t.status==:archived or t.status==:canceled
-              =link_to '<i class="icon-repeat"></i>'.html_safe, restore_poster_path(t), {:method => :put, :class=>"btn", :title=>"Gjenopprett"} if permitted_to? :restore,t
+              =link_to '<i class="icon-repeat"></i>'.html_safe, restore_poster_path(t), {:method => :put, :class=>"btn", :title=>"Gjenopprett"} if permitted_to? :restore, t
             - if permitted_to? :destroy, t
               =link_to '<i class="icon-warning-sign"></i>'.html_safe, t, {:method=>:delete, :class=>"btn", :title=>"Slett"} 
           %h3

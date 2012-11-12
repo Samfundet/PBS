@@ -9,6 +9,9 @@
 
 Rake::Task['samfundet_auth_engine:db:seed'].invoke
 
+Member.create!(:mail=>'test1@test.com', :fornavn=>'test1', :passord=>'passord')
+Member.create!(:mail=>'test2@test.com', :fornavn=>'test2', :passord=>'passord')
+
 julaften = Event.create!(
     :name => "Julaften",
     :time => DateTime.new(2012,12,24)

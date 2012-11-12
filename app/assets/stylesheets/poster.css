@@ -20,3 +20,11 @@ ul {
 .list_buttons{
   float: right;
 }
+
+.formtastic{
+  width: 600px;
+}
+
+li input, li textarea {
+  width: 100%;
+}

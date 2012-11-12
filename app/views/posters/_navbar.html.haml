@@ -1,15 +1,17 @@
 %div{:class=>"navbar"}
   %div{:class=>"navbar-inner"}
     %div{:class=>"brand"}
-      Plakat Bestillings System
+      %span
+        PBS - 
+        =yield :title
     %div{:class=>"btn-group"}
       =link_to '<i class="icon-home"></i>'.html_safe, posters_path, {:class=>"btn", :title=>"Hjem"}
-      =link_to '<i class="icon-plus"></i>'.html_safe, {:action=>"new"}, {:class=>"btn", :title=>"Lag ny plakat"}
-      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_posters_path, {:class=>"btn", :title=>"Gå til arkiv"} if permitted_to? :archive, @poster
-      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"} if permitted_to? :cancel, @poster
-      =link_to '<i class="icon-heart"></i>'.html_safe, take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"} if permitted_to? :take, @poster
-      =link_to '<i class="icon-shopping-cart"></i>'.html_safe, order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"}
-      =link_to '<i class="icon-fullscreen"></i>'.html_safe, dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"}
+      =link_to '<i class="icon-plus"></i>'.html_safe, {:action=>"new"}, {:class=>"btn", :title=>"Lag ny plakat"} if permitted_to? :create, :posters
+      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_posters_path, {:class=>"btn", :title=>"Gå til arkiv"} if permitted_to? :archive, :posters
+      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"} if permitted_to? :cancel, :posters
+      =link_to '<i class="icon-heart"></i>'.html_safe, take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"} if permitted_to? :take, :posters
+      =link_to '<i class="icon-shopping-cart"></i>'.html_safe, order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"} if permitted_to? :create, :posters
+      =link_to '<i class="icon-fullscreen"></i>'.html_safe, dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"} if permitted_to? :edit, :dimensions
       - if params[:order]=="asc"
         =link_to '<i class="icon-arrow-up"></i>'.html_safe, params.merge(:order => "desc"), {:class=>"btn", :title=>"Sorter synkende"}
       - else
@@ -22,3 +24,5 @@
           =link_to "sist endret", params.merge(:sort => "updated_at")
         %li
           =link_to "navn", params.merge(:sort => "name")
+
+      =link_to '<i class="icon-off"></i>'.html_safe, order_posters_path, {:class=>"btn pull-right", :title=>"Logg ut"}
