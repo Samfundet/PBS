@@ -11,7 +11,7 @@
       =link_to '<i class="icon-remove"></i>'.html_safe, cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"} if permitted_to? :cancel, :posters
       =link_to '<i class="icon-heart"></i>'.html_safe, take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"} if permitted_to? :take, :posters
       =link_to '<i class="icon-shopping-cart"></i>'.html_safe, order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"} if permitted_to? :create, :posters
-      =link_to '<i class="icon-fullscreen"></i>'.html_safe, dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"} if permitted_to? :edit, :dimensions
+      =link_to '<i class="icon-fullscreen"></i>'.html_safe, dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"} if permitted_to? :create, :dimensions
       - if params[:order]=="asc"
         =link_to '<i class="icon-arrow-up"></i>'.html_safe, params.merge(:order => "desc"), {:class=>"btn", :title=>"Sorter synkende"}
       - else
@@ -25,4 +25,7 @@
         %li
           =link_to "navn", params.merge(:sort => "name")
 
-      =link_to '<i class="icon-off"></i>'.html_safe, order_posters_path, {:class=>"btn pull-right", :title=>"Logg ut"}
+      - if @current_user
+        =link_to '<i class="icon-off"></i>'.html_safe, '/logout', {:class=>"btn pull-right", :title=>"Logg ut"}
+      - else
+        =link_to '<i class="icon-off"></i>'.html_safe, '/login', {:class=>"btn pull-right", :title=>"Logg inn"}
