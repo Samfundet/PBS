@@ -1,0 +1,13 @@
+li {
+    border: 1px solid silver;
+    float: left;
+    list-style: none;
+    padding: 5px 5px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+ul {
+    padding-left: 0;
+    overflow: auto;
+}

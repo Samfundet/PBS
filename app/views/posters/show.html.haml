@@ -1,5 +1,5 @@
 - content_for :title, 'Vis Plakat'
-
+= stylesheet_link_tag "assetgrid.css"
 =render 'navbar'
 
 %div{:class => 'container'}
@@ -77,5 +77,5 @@
     %ul
       - @poster.assets.each do |asset|
         %li
-          = link_to( image_tag(asset.image.url(:thumb)), asset.image.url(:original) )
+          = link_to( image_tag(asset.image.url(:thumb), :title => asset.image_file_name), asset.image.url(:original) )
           = asset.image_file_name
