@@ -34,7 +34,8 @@ gem 'declarative_authorization'
 gem 'date_validator'
 
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
+gem 'jquery_datepicker'
 gem 'rb-readline'
 
 group :test do
