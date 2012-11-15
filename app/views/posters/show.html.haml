@@ -74,8 +74,8 @@
   %span
     Vedlagte filer:
   %div{:class => 'well'}
-    %ul
+    %ul{:class=>"asset-ul"}
       - @poster.assets.each do |asset|
-        %li
+        %li{:class=>"asset-li"}
           = link_to( image_tag(asset.image.url(:thumb), :title => asset.image_file_name), asset.image.url(:original) )
           = asset.image_file_name

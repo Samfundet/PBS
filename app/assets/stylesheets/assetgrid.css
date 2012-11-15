@@ -1,4 +1,4 @@
-li {
+.asset-li {
     border: 1px solid silver;
     float: left;
     list-style: none;
@@ -6,8 +6,13 @@ li {
     width: 150px;
     overflow:hidden;
     text-overflow:ellipsis;
+    text-align:center;
 }
-ul {
+.filename{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.asset-ul {
     padding-left: 0;
     overflow: auto;
 }

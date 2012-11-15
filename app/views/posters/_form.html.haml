@@ -1,5 +1,6 @@
 = javascript_include_tag "hideunusedfilefields.js"
 = javascript_include_tag "jquery-ui-timepicker-addon.js"
+= stylesheet_link_tag "assetgrid.css"
 =semantic_form_for @poster, :html => { :multipart => true } do |p|
   =p.inputs :name => "Poster" do
     =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
@@ -13,13 +14,22 @@
     =p.input :area, :hint => "Velg sted denne eventen skjer."
     =p.input :event_time,:as => :string, :input_html => {  :class => "datetimepicker", :placeholder => "DD.MM.ÅÅÅÅ HH:MM"}
 
-    %p
+    %label{:class=>"label"}
+      Vedlagte filer
+    %p{:class=>"inline-hints"}
       Last opp filer tilhørende plakaten (max filstørrelse er 50 MB).
+    %ul{:class=>"asset-ui"}
+      =p.fields_for :assets do |asset|
+        -unless asset.object.new_record?
+          %li{:class=>"asset-li"}
+            = link_to( image_tag(asset.object.image.url(:thumb), :title => asset.object.image_file_name), asset.object.image.url(:original) )
+            %div{:class=>"filename"}
+              = asset.object.image_file_name
+            %div{:align=>"center"}
+              = asset.check_box :_destroy
+              Slett fil.
     =p.fields_for :assets do |asset|
       %p
-        -unless asset.object.new_record?
-          = link_to( image_tag(asset.object.image.url(:thumb)), asset.object.image.url(:original) )
-          = asset.check_box :_destroy
         -if asset.object.new_record?
           %div
             .newfilefield
