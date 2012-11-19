@@ -11,7 +11,14 @@ class Poster < ActiveRecord::Base
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
   validates :name, :group_id, :dimension_id, :presence => true
-  validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt"}
+ 
+  validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt", 
+  :if => Proc.new do
+    if !(Authorization.current_user.respond_to? :role_symbols) or !(Authorization.current_user.role_symbols.include? :lim_web)
+      true
+    end
+  end
+     }
   validates_associated :group, :dimension
 
 
@@ -19,6 +26,8 @@ class Poster < ActiveRecord::Base
   validates_inclusion_of :status, :in => @@STATUSES.keys, :message => "Invalid poster status"
 
   scope :active, where('status = "active"')
+  
+
 
   def status
     field = read_attribute(:status)
