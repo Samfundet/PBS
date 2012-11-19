@@ -127,7 +127,11 @@ class PostersController < ApplicationController
 
   private 
   def sort_column
-    Poster.column_names.include?(params[:sort]) ? params[:sort] : 'updated_at'
+    if Poster.column_names.include?(params[:sort])
+      @sort_column = params[:sort]
+    else
+      @sort_column = 'updated_at'
+    end
   end
 
   def sort_order

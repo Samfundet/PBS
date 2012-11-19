@@ -39,7 +39,7 @@
         =link_to params.merge(:order => "asc"), {:class=>"btn", :title=>"Sorter stigende"} do
           %i{:class=>"icon-arrow-down"}
       %a{:class=>"btn dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
-        Sorter etter
+        Sortert etter: #{@sort_column}
         %span{:class=>"caret"}
       %ul{:class=>"dropdown-menu"}
         %li
