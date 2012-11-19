@@ -27,13 +27,7 @@ class PostersController < ApplicationController
 
   def update
     @poster = Poster.find(params[:id])
-    if @current_user.role_symbols.include? :lim_web
-      ret = @poster.update_attributes(params[:poster])
-    else
-      params[:poster].delete("event_time")
-      ret = @poster.update_attributes(params[:poster])
-    end
-    if ret
+    if @poster.update_attributes(params[:poster])
       PosterMailer.poster_changed(@poster).deliver
       flash[:success] = "Plakaten er endret."
       redirect_to posters_path
