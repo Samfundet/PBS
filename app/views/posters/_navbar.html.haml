@@ -5,17 +5,39 @@
         PBS - 
         =yield :title
     %div{:class=>"btn-group"}
-      =link_to '<i class="icon-home"></i>'.html_safe, posters_path, {:class=>"btn", :title=>"Hjem"}
-      =link_to '<i class="icon-plus"></i>'.html_safe, {:action=>"new"}, {:class=>"btn", :title=>"Lag ny plakat"} if permitted_to? :create, :posters
-      =link_to '<i class="icon-briefcase"></i>'.html_safe, archive_posters_path, {:class=>"btn", :title=>"Gå til arkiv"} if permitted_to? :archive, :posters
-      =link_to '<i class="icon-remove"></i>'.html_safe, cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"} if permitted_to? :cancel, :posters
-      =link_to '<i class="icon-heart"></i>'.html_safe, take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"} if permitted_to? :take, :posters
-      =link_to '<i class="icon-shopping-cart"></i>'.html_safe, order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"} if permitted_to? :create, :posters
-      =link_to '<i class="icon-fullscreen"></i>'.html_safe, dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"} if permitted_to? :create, :dimensions
+      =link_to posters_path, {:class=>"btn", :title=>"Hjem"} do
+        %i{:class=>"icon-home"}
+
+      - if permitted_to? :create, :posters
+        =link_to new_poster_path, {:class=>"btn", :title=>"Lag ny plakat"} do
+          %i{:class=>"icon-plus"}
+
+      - if permitted_to? :archive, :posters
+        =link_to archive_posters_path, {:class=>"btn", :title=>"Gå til arkiv"} do
+          %i{:class=>"icon-briefcase"}
+
+      - if permitted_to? :cancel, :posters
+        =link_to cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"} do
+          %i{:class=>"icon-remove"}
+
+      - if permitted_to? :take, :posters
+        =link_to take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"} do
+          %i{:class=>"icon-heart"}
+
+      - if permitted_to? :create, :posters
+        =link_to order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"} do
+          %i{:class=>"icon-shopping-cart"}
+
+      - if permitted_to? :create, :dimensions
+        =link_to dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"} do
+          %i{:class=>"icon-fullscreen"}
+
       - if params[:order]=="asc"
-        =link_to '<i class="icon-arrow-up"></i>'.html_safe, params.merge(:order => "desc"), {:class=>"btn", :title=>"Sorter synkende"}
+        =link_to params.merge(:order => "desc"), {:class=>"btn", :title=>"Sorter synkende"} do
+          %i{:class=>"icon-arrow-up"}
       - else
-        =link_to '<i class="icon-arrow-down"></i>'.html_safe, params.merge(:order => "asc"), {:class=>"btn", :title=>"Sorter stigende"}
+        =link_to params.merge(:order => "asc"), {:class=>"btn", :title=>"Sorter stigende"} do
+          %i{:class=>"icon-arrow-down"}
       %a{:class=>"btn dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
         Sorter etter
         %span{:class=>"caret"}
@@ -26,6 +48,9 @@
           =link_to "navn", params.merge(:sort => "name")
 
       - if @current_user
-        =link_to '<i class="icon-off"></i>'.html_safe, '/logout', {:class=>"btn pull-right", :title=>"Logg ut"}
+        =link_to '/logout', {:class=>"btn pull-right", :title=>"Logg ut"} do
+          %i{:class=>"icon-off"}
+            =@current_user.full_name
       - else
-        =link_to '<i class="icon-off"></i>'.html_safe, '/login', {:class=>"btn pull-right", :title=>"Logg inn"}
+        =link_to '/login', {:class=>"btn pull-right", :title=>"Logg inn"} do
+          %i{:class=>"icon-off"}
