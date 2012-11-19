@@ -14,22 +14,22 @@ Member.create!(:mail=>'test2@test.com', :fornavn=>'test2', :passord=>'passord')
 
 julaften = Event.create!(
     :name => "Julaften",
-    :time => DateTime.new(2012,12,24)
+    :time => Time.new(2012,12,24,00,00)
 )
 
 halloween = Event.create!(
     :name => "halloween",
-    :time => DateTime.new(2012,10,31)
+    :time => Time.new(2012,10,31)
 )
 
 Nightwish = Event.create!(
     :name => "nightwish",
-    :time => DateTime.new(2012,11,9)
+    :time => Time.new(2012,11,9)
 )
 
 meshuggah = Event.create!(
     :name => "meshuggah",
-    :time => DateTime.new(2012,11,19)
+    :time => Time.new(2012,11,19)
 )
 
 puts "Creating dimensions"
