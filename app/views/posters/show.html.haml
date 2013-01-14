@@ -15,7 +15,7 @@
         =link_to archive_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Arkiver"} do
           %i{:class=>"icon-briefcase"}
 
-      - if permitted_to? :cancel, @poster
+      - if permitted_to? :cancel_poster, @poster
         =link_to cancel_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Avbestill"} do
           %i{:class=>"icon-remove"}
 
@@ -30,27 +30,27 @@
       =link_to @poster, {:method=>:delete, :class=>"btn", :title=>"Slett"} do
         %i{:class=>"icon-repeat"}
   %h3
-    Status: 
+    Status:
     = @poster.status_string
 
   %table{:class => 'table'}
     %tr
       %td
-        Bestiller: 
+        Bestiller:
       %td
         -if @poster.orderer
           =@poster.orderer.full_name
       %td
-        Event: 
+        Event:
       %td
         = @poster.event
     %tr
       %td
-        Gruppe: 
+        Gruppe:
       %td
         = @poster.group
       %td
-        Dimensjon: 
+        Dimensjon:
       %td
         = @poster.dimension
     %tr
@@ -65,11 +65,11 @@
         = @poster.flyers
     %tr
       %td
-        Event tid: 
+        Event tid:
       %td
         = l @poster.event_time, :format => :long_datetime
       %td
-        Banners: 
+        Banners:
       %td
         = @poster.banner
     %tr
