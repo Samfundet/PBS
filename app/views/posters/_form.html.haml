@@ -1,7 +1,7 @@
 = javascript_include_tag "hideunusedfilefields.js"
 = javascript_include_tag "jquery-ui-timepicker-addon.js"
 = stylesheet_link_tag "assetgrid.css"
-=semantic_form_for @poster, :html => { :multipart => true } do |p|
+=semantic_form_for @poster, :html => { :multipart => true, :class => "form-horizontal"} do |p|
   =p.inputs :name => "Poster" do
     =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
     =p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
@@ -34,4 +34,5 @@
             .newfilefield
               = asset.file_field :image
 
-    =p.actions :submit, :cancel
+    =p.action :submit
+    =p.action :cancel

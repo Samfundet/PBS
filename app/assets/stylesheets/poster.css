@@ -25,6 +25,10 @@ ul {
   width: 600px;
 }
 
+.formtastic textarea{
+  width: 400px;
+}
+
 li input, li textarea {
   width: 100%;
 }
