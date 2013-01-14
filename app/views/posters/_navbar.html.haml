@@ -2,7 +2,7 @@
   %div{:class=>"navbar-inner"}
     %div{:class=>"brand"}
       %span
-        PBS - 
+        PBS -
         =yield :title
     %div{:class=>"btn-group"}
       =link_to posters_path, {:class=>"btn", :title=>"Hjem"} do
@@ -45,7 +45,10 @@
         - Poster.column_names.each do |name|
           %li
             =link_to Poster.human_attribute_name(name), params.merge(:sort => name)
-
+        %li
+          =link_to "sist endret", params.merge(:sort => "updated_at")
+        %li
+          =link_to "navn", params.merge(:sort => "name")
       - if @current_user
         =link_to '/logout', {:class=>"btn pull-right", :title=>"Logg ut"} do
           %i{:class=>"icon-off"}
