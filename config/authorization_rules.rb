@@ -18,9 +18,20 @@ authorization do
     end
   end
 
-  role :lim_web do
+  role :mg_layout do
     includes :medlem
-    has_permission_on :posters, :to => [:edit, :update, :cancel, :cancel_poster, :restore, :take, :take_poster, :archive, :archive_poster, :destroy]
-    has_permission_on :dimensions, :to => [:new, :create, :index, :show, :edit, :update, :archive_dimension, :restore]
+    has_permission_on :posters, :to => [:edit, :update, :cancel, :cancel_poster, :restore, :take, :take_poster, :archive, :archive_poster]
+    has_permission_on :dimensions, :to => [:show, :index]
+  end
+
+  role :mg_layout_sjef do
+    includes :mg_layout
+    has_permission_on :posters, :to => [:destroy]
+    has_permission_on :dimensions, :to => [:new, :create, :edit, :update, :archive_dimension, :restore]
+  end
+
+  role :lim_web do
+    includes :mg_layout_sjef
+    has_permission_on :posters, :to => [:destroy]
   end
 end
