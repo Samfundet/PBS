@@ -22,6 +22,7 @@
             group: "Gjeng"
             event: "Arrangement"
             event_time: "Arrangement tid"
+            updated_at: "Sist endret"
         dimension:
             text: "Dimensjon (123x456 f.eks)"
 
