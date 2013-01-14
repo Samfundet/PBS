@@ -23,6 +23,14 @@
             event: "Arrangement"
             event_time: "Arrangement tid"
             updated_at: "Sist endret"
+            orderer_id: "Bestiller"
+            send_to_press: "Sendt til trykk"
+            area: "Område"
+            responsible_id: "Ansvarlig"
+            created_at: "Opprettet"
+            group_id: "Gruppe"
+            dimension_id: "Dimensjon"
+            
         dimension:
             text: "Dimensjon (123x456 f.eks)"
 
