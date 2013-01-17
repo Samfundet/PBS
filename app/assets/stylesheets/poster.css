@@ -32,3 +32,13 @@ ul {
 li input, li textarea {
   width: 100%;
 }
+
+.login-form{
+  margin: 3px 0 0;
+  width: auto;
+}
+
+.login-form input{
+  width: 100px;
+  height: 25px;
+}

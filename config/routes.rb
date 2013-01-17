@@ -65,7 +65,6 @@ PbsLocalhostNo::Application.routes.draw do
     get :order,   :on => :collection, :action => "order"
   end
   root :to => 'posters#index'
-  match '/login', :to=>'sessions#new', :via=>:get
   match '/login', :to=>'sessions#create', :via=>:post
   match '/logout', :to=>'sessions#destroy', :via=>:get
 

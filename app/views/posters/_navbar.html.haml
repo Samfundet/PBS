@@ -67,9 +67,11 @@
         %li
           - if @current_user
             =link_to '/logout', {:title=>"Logg ut"} do
-              %i{:class=>"icon-off"}
-              #{@current_user.full_name} - logg ut
+              #{@current_user.full_name} - 
+              %b
+                logg ut
           - else
-            =link_to '/login', {:title=>"Logg inn"} do
-              %i{:class=>"icon-off"}
-              logg inn
+            = semantic_form_for Member.new, :url => login_path, :html=>{:class=>"login-form form-horizontal"} do |form|
+              = form.text_field :mail, :value=>@mail, :placeholder=>t("user")
+              = form.text_field :passord, :placeholder=>t("password"), :type=>:password
+              = form.submit "Logg inn"

@@ -1,4 +1,6 @@
 'no':
+  user: "bruker"
+  password: "passord"
   time:
     formats:
       short_datetime: "%d.%m.%y"
