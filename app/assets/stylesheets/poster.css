@@ -34,11 +34,19 @@ li input, li textarea {
 }
 
 .login-form{
-  margin: 3px 0 0;
+  margin: 3px 0 0 8px;
   width: auto;
 }
 
 .login-form input{
   width: 100px;
-  height: 25px;
+}
+
+.login-form .btn{
+  height: 28px;
+  margin-bottom: 8px;
+}
+
+.nav ul{
+  padding: 0 5px 0 5px;
 }
