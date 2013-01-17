@@ -5,58 +5,71 @@
         %span
           PBS - 
           =yield :title
-      %div{:class=>"btn-group"}
-        =link_to posters_path, {:class=>"btn", :title=>"Hjem"} do
-          %i{:class=>"icon-home"}
+      %ul{:class=>"nav"}
+        %li
+          =link_to posters_path, {:title=>"Hjem"} do
+            %i{:class=>"icon-home"}
 
         - if permitted_to? :create, :posters
-          =link_to new_poster_path, {:class=>"btn", :title=>"Lag ny plakat"} do
-            %i{:class=>"icon-plus"}
+          %li
+            =link_to new_poster_path, {:title=>"Lag ny plakat"} do
+              %i{:class=>"icon-plus"}
 
         - if permitted_to? :archive, :posters
-          =link_to archive_posters_path, {:class=>"btn", :title=>"Gå til arkiv"} do
-            %i{:class=>"icon-briefcase"}
+          %li
+            =link_to archive_posters_path, {:title=>"Gå til arkiv"} do
+              %i{:class=>"icon-briefcase"}
 
         - if permitted_to? :cancel, :posters
-          =link_to cancel_posters_path, {:class=>"btn", :title=>"Gå til avbestilte"} do
-            %i{:class=>"icon-remove"}
+          %li
+            =link_to cancel_posters_path, {:title=>"Gå til avbestilte"} do
+              %i{:class=>"icon-remove"}
 
         - if permitted_to? :take, :posters
-          =link_to take_posters_path, {:class=>"btn", :title=>"Gå til de du har ansvar for"} do
-            %i{:class=>"icon-heart"}
+          %li
+            =link_to take_posters_path, {:title=>"Gå til de du har ansvar for"} do
+              %i{:class=>"icon-heart"}
 
         - if permitted_to? :create, :posters
-          =link_to order_posters_path, {:class=>"btn", :title=>"Gå til de du har bestilt"} do
-            %i{:class=>"icon-shopping-cart"}
+          %li
+            =link_to order_posters_path, {:title=>"Gå til de du har bestilt"} do
+              %i{:class=>"icon-shopping-cart"}
 
         - if permitted_to? :create, :dimensions
-          =link_to dimensions_path, {:class=>"btn", :title=>"Rediger dimensjoner"} do
-            %i{:class=>"icon-fullscreen"}
+          %li
+            =link_to dimensions_path, {:title=>"Rediger dimensjoner"} do
+              %i{:class=>"icon-fullscreen"}
+
+        %li{:class=>"divider-vertical"}
 
         - if params[:order]=="asc"
-          =link_to params.merge(:order => "desc"), {:class=>"btn", :title=>"Sorter synkende"} do
-            %i{:class=>"icon-arrow-up"}
+          %li
+            =link_to params.merge(:order => "desc"), {:title=>"Sorter synkende"} do
+              %i{:class=>"icon-arrow-up"}
         - else
-          =link_to params.merge(:order => "asc"), {:class=>"btn", :title=>"Sorter stigende"} do
-            %i{:class=>"icon-arrow-down"}
+          %li
+            =link_to params.merge(:order => "asc"), {:title=>"Sorter stigende"} do
+              %i{:class=>"icon-arrow-down"}
 
-      - if @sort_column
-        %ul{:class=>"nav", :role=>"navigation"}
-          %li{:class=>"dropdown"}
-            %a{:class=>"btn dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
-              Sortert etter: #{Poster.human_attribute_name @sort_column}
-              %span{:class=>"caret"}
-            %ul{:class=>"dropdown-menu"}
-              - Poster.column_names.each do |name|
-                %li
-                  =link_to Poster.human_attribute_name(name), params.merge(:sort => name)
+        - if @sort_column
+          %li
+            %ul{:class=>"nav", :role=>"navigation"}
+              %li{:class=>"dropdown"}
+                %a{:class=>"dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
+                  Sortert etter: #{Poster.human_attribute_name @sort_column}
+                  %span{:class=>"caret"}
+                %ul{:class=>"dropdown-menu"}
+                  - Poster.column_names.each do |name|
+                    %li
+                      =link_to Poster.human_attribute_name(name), params.merge(:sort => name)
 
       %ul{:class=>"nav pull-right"}
-        %li{:class=>"btn"}
+        %li
           - if @current_user
             =link_to '/logout', {:title=>"Logg ut"} do
               %i{:class=>"icon-off"}
-                =@current_user.full_name
+              #{@current_user.full_name} - logg ut
           - else
             =link_to '/login', {:title=>"Logg inn"} do
               %i{:class=>"icon-off"}
+              logg inn
