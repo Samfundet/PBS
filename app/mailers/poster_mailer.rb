@@ -4,7 +4,7 @@ class PosterMailer < ActionMailer::Base
 
   def poster_changed(poster)
     if poster.responsible == nil
-      email = 'mlysgaard@gmail.com' # change to the default mail
+      email = 'mg-layout@samfundet.no'
     else
       email = poster.responsible.mail
     end
