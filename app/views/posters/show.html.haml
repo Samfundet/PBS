@@ -8,27 +8,23 @@
   %div{:class=>"list_buttons"}
     - if @poster.status==:active
       -if permitted_to? :edit, @poster
-        =link_to edit_poster_path(@poster), {:class=>"btn", :title=>"Rediger"} do
-          %i{:class=>"icon-edit"}
+        =link_to "Rediger", edit_poster_path(@poster), {:class=>"underline", :title=>"Rediger"}
 
       -if permitted_to? :archive, @poster
-        =link_to archive_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Arkiver"} do
-          %i{:class=>"icon-briefcase"}
+        =link_to "Arkiver", archive_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Arkiver"}
 
       - if permitted_to? :cancel_poster, @poster
-        =link_to cancel_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Avbestill"} do
-          %i{:class=>"icon-remove"}
+        =link_to "Avbestill", cancel_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Avbestill"}
 
-      - if permitted_to? :take, @poster
-        =link_to take_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Ta jobben"} do
-          %i{:class=>"icon-heart"}
+      - if @poster.responsible==@current_user
+        =link_to 'Gi bort ansvar', take_poster_path(@poster) , {:method => :put, :class=>"underline", :title=>"Gi bort ansvaret"} if permitted_to? :take, @poster
+      - else
+        =link_to 'Ta ansvar', take_poster_path(@poster) , {:method => :put, :class=>"underline", :title=>"Ta jobben"} if permitted_to? :take, @poster
 
     - if (@poster.status==:archived or @poster.status==:canceled) and permitted_to? :restore, @poster
-      =link_to restore_poster_path(@poster), {:method => :put, :class=>"btn", :title=>"Gjenopprett"} do
-        %i{:class=>"icon-repeat"}
+      =link_to "Gjenopprett", restore_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Gjenopprett"}
     - if permitted_to? :destroy, @poster
-      =link_to @poster, {:method=>:delete, :class=>"btn", :title=>"Slett"} do
-        %i{:class=>"icon-repeat"}
+      =link_to "Slett", @poster, {:method=>:delete, :class=>"underline", :title=>"Slett"}
   %h3
     Status:
     = @poster.status_string
@@ -77,6 +73,8 @@
         Sted:
       %td
         =@poster.area
+      %td
+      %td
   %span
     Tekst på plakat:
   %div{:class => 'well'}

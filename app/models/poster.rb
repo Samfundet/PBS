@@ -12,7 +12,8 @@ class Poster < ActiveRecord::Base
 
   validates :name, :group_id, :dimension_id, :presence => true
  
-  validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt", 
+  validates :event_time, :presence => true
+  validates :event_time, :date => {:after => DateTime.now + 3.week, :message => "Du rakk ikke fristen som er på 3 uker, send mail til layout@samfundet.no eller noe slikt",
   :if => Proc.new do
     if !(Authorization.current_user.respond_to? :role_symbols) or !(Authorization.current_user.role_symbols.include? :lim_web)
       true

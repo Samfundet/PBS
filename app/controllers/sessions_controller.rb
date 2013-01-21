@@ -1,8 +1,6 @@
 # encoding: UTF-8
 
 class SessionsController < ApplicationController
-  def new
-  end
 
   def destroy
     session[:member_id] = nil
@@ -14,8 +12,8 @@ class SessionsController < ApplicationController
 
     if member.nil?
       @mail = params[:member][:mail]
-      flash.now[:error] = "Du tastet inn feil brukernavn eller passord."
-      render :new
+      flash[:error] = "Du tastet inn feil brukernavn eller passord."
+      redirect_to posters_url
     else
       flash[:success] = "Du er nå logget inn."
       session[:member_id] = member.id
