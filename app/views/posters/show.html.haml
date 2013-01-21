@@ -28,7 +28,7 @@
         %i{:class=>"icon-repeat"}
     - if permitted_to? :destroy, @poster
       =link_to @poster, {:method=>:delete, :class=>"btn", :title=>"Slett"} do
-        %i{:class=>"icon-repeat"}
+        %i{:class=>"icon-warning-sign"}
   %h3
     Status:
     = @poster.status_string
@@ -77,6 +77,8 @@
         Sted:
       %td
         =@poster.area
+      %td
+      %td
   %span
     Tekst på plakat:
   %div{:class => 'well'}
