@@ -15,7 +15,7 @@ class PostersController < ApplicationController
       flash[:success] = "Plakaten er laget."
       redirect_to posters_path
     else
-      flash[:error] = "Vennligst fyll ut alle felter."
+      flash[:error] = "Vennligst fyll ut alle felter og tilse at opplastede filer er under 50Mb og av tillatt type."
       render :action => 'new'
     end
   end
@@ -32,7 +32,7 @@ class PostersController < ApplicationController
       flash[:success] = "Plakaten er endret."
       redirect_to posters_path
     else
-      flash[:error] = "Noe gikk galt, endringene ble ikke lagret. Sjekk at filene dine er av tillatt type."
+      flash[:error] = "Noe gikk galt, endringene ble ikke lagret. Tilse at opplastede filer er under 50Mb og tillatt type."
       render :action => 'edit'
     end
   end
