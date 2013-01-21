@@ -6,7 +6,7 @@ $('#poster_event_time').datetimepicker({
 };
 
 var formatDate = function(){
-	if ($('#poster_event_time').val().length != 0) {
+	if (window.location.pathname.slice(-4,-1) == "edi" && $('#poster_event_time').val().length != 0) {
 	  month = $('#poster_event_time').val().slice(5,7);
 	  day = $('#poster_event_time').val().slice(8,10);
 	  minAndHour = $('#poster_event_time').val().slice(11,16);
