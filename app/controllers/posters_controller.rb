@@ -74,14 +74,15 @@ class PostersController < ApplicationController
 
   def take_poster
     @poster = Poster.find(params[:id])
-    @poster.responsible = @current_user
-    if @poster.save
+    if @poster.responsible == @current_user
+      @poster.responsible = nil
+    else
+      @poster.responsible = @current_user
       PosterMailer.poster_taken(@poster).deliver
       flash[:success] = "Du er nå ansvarlig."
-      redirect_to posters_path
-    else
-      flash[:error] = "Noe gikk galt, du ble ikke gjort til ansvarlig"
     end
+    @poster.save
+    redirect_to posters_path
   end
 
   def archive

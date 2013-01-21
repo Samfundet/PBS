@@ -32,6 +32,5 @@ authorization do
 
   role :lim_web do
     includes :mg_layout_sjef
-    has_permission_on :posters, :to => [:destroy]
   end
 end
