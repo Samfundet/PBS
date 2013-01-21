@@ -50,3 +50,7 @@ li input, li textarea {
 .nav ul{
   padding: 0 5px 0 5px;
 }
+
+.nav > li > a{
+  padding: 10px 5px 10px 5px !important;
+}

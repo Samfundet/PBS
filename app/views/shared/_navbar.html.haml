@@ -6,6 +6,7 @@
           PBS - 
           =yield :title
       %ul{:class=>"nav"}
+        %li{:class=>"divider-vertical"}
         %li
           =link_to "Hjem", posters_path, {:title=>"Gå til startsiden."}
 
@@ -57,6 +58,7 @@
                       =link_to Poster.human_attribute_name(name), params.merge(:sort => name)
 
       %ul{:class=>"nav pull-right"}
+        %li{:class=>"divider-vertical"}
         %li
           - if @current_user
             =link_to '/logout', {:title=>"Logg ut"} do
