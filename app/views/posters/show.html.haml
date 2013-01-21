@@ -8,23 +8,23 @@
   %div{:class=>"list_buttons"}
     - if @poster.status==:active
       -if permitted_to? :edit, @poster
-        =link_to "Rediger", edit_poster_path(@poster), {:title=>"Rediger"}
+        =link_to "Rediger", edit_poster_path(@poster), {:class=>"underline", :title=>"Rediger"}
 
       -if permitted_to? :archive, @poster
-        =link_to "Arkiver", archive_poster_path(@poster), {:method => :put, :title=>"Arkiver"}
+        =link_to "Arkiver", archive_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Arkiver"}
 
       - if permitted_to? :cancel_poster, @poster
-        =link_to "Avbestill", cancel_poster_path(@poster), {:method => :put, :title=>"Avbestill"}
+        =link_to "Avbestill", cancel_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Avbestill"}
 
       - if @poster.responsible==@current_user
-        =link_to 'Gi bort ansvar', take_poster_path(@poster) , {:method => :put, :title=>"Gi bort ansvaret"} if permitted_to? :take, @poster
+        =link_to 'Gi bort ansvar', take_poster_path(@poster) , {:method => :put, :class=>"underline", :title=>"Gi bort ansvaret"} if permitted_to? :take, @poster
       - else
-        =link_to 'Ta ansvar', take_poster_path(@poster) , {:method => :put, :title=>"Ta jobben"} if permitted_to? :take, @poster
+        =link_to 'Ta ansvar', take_poster_path(@poster) , {:method => :put, :class=>"underline", :title=>"Ta jobben"} if permitted_to? :take, @poster
 
     - if (@poster.status==:archived or @poster.status==:canceled) and permitted_to? :restore, @poster
-      =link_to "Gjenopprett", restore_poster_path(@poster), {:method => :put, :title=>"Gjenopprett"}
+      =link_to "Gjenopprett", restore_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Gjenopprett"}
     - if permitted_to? :destroy, @poster
-      =link_to "Slett", @poster, {:method=>:delete, :title=>"Slett"}
+      =link_to "Slett", @poster, {:method=>:delete, :class=>"underline", :title=>"Slett"}
   %h3
     Status:
     = @poster.status_string
