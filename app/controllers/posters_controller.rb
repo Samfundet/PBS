@@ -32,7 +32,7 @@ class PostersController < ApplicationController
       flash[:success] = "Plakaten er endret."
       redirect_to posters_path
     else
-      flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
+      flash[:error] = "Noe gikk galt, endringene ble ikke lagret. Sjekk at filene dine er av tillatt type."
       render :action => 'edit'
     end
   end
