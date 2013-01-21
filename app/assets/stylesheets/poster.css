@@ -1,8 +1,31 @@
+
 .success {
-    border:1px solid green;
     color:green;
-    font-size:20pt;
+    font-size:13pt;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 30px;
 }
+
+
+.notice {
+    color:yellow;
+    font-size:13pt;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 30px;
+}
+
+.error {
+    color:red;
+    font-size:13pt;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 30px;
+}
+
+
+
 
 li {
   list-style: none;
@@ -31,4 +54,26 @@ ul {
 
 li input, li textarea {
   width: 100%;
+}
+
+.login-form{
+  margin: 3px 0 0 8px;
+  width: auto;
+}
+
+.login-form input{
+  width: 100px;
+}
+
+.login-form .btn{
+  height: 28px;
+  margin-bottom: 8px;
+}
+
+.nav ul{
+  padding: 0 5px 0 5px;
+}
+
+.nav > li > a{
+  padding: 10px 5px 10px 5px !important;
 }

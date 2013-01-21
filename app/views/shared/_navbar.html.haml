@@ -1,0 +1,72 @@
+%div{:class=>"navbar"}
+  %div{:class=>"navbar-inner"}
+    %div{:class=>"container"}
+      %div{:class=>"brand"}
+        %span
+          PBS - 
+          =yield :title
+      %ul{:class=>"nav"}
+        %li{:class=>"divider-vertical"}
+        %li
+          =link_to "Hjem", posters_path, {:title=>"Gå til startsiden."}
+
+        - if permitted_to? :create, :posters
+          %li
+            =link_to "Ny", new_poster_path, {:title=>"Lag ny plakat."}
+
+        - if permitted_to? :archive, :posters
+          %li
+            =link_to "Arkiv", archive_posters_path, {:title=>"Gå til arkiverte plakater."}
+
+        - if permitted_to? :cancel, :posters
+          %li
+            =link_to "Avbestilte", cancel_posters_path, {:title=>"Vis avbestilte plakater."}
+
+        - if permitted_to? :take, :posters
+          %li
+            =link_to "Ansvar", take_posters_path, {:title=>"Vis plakater du har tatt ansvaret for å lage."}
+
+        - if permitted_to? :create, :posters
+          %li
+            =link_to "Dine bestillinger", order_posters_path, {:title=>"Vis plakater du har bestilt."}
+
+        - if permitted_to? :create, :dimensions
+          %li
+            =link_to "Dimensjoner", dimensions_path, {:title=>"Vis dimensjoner."}
+
+        %li{:class=>"divider-vertical"}
+
+        - if params[:order]=="asc"
+          %li
+            =link_to params.merge(:order => "desc"), {:title=>"Sorter synkende"} do
+              %i{:class=>"icon-arrow-up"}
+        - else
+          %li
+            =link_to params.merge(:order => "asc"), {:title=>"Sorter stigende"} do
+              %i{:class=>"icon-arrow-down"}
+
+        - if @sort_column
+          %li
+            %ul{:class=>"nav", :role=>"navigation"}
+              %li{:class=>"dropdown"}
+                %a{:class=>"dropdown-toggle", :'data-toggle'=>"dropdown", :href=>"#"}
+                  Sortering: #{Poster.human_attribute_name @sort_column}
+                  %span{:class=>"caret"}
+                %ul{:class=>"dropdown-menu"}
+                  - Poster.column_names.each do |name|
+                    %li
+                      =link_to Poster.human_attribute_name(name), params.merge(:sort => name)
+
+      %ul{:class=>"nav pull-right"}
+        %li{:class=>"divider-vertical"}
+        %li
+          - if @current_user
+            =link_to '/logout', {:title=>"Logg ut"} do
+              #{@current_user.full_name} - 
+              %b
+                logg ut
+          - else
+            = semantic_form_for Member.new, :url => login_path, :html=>{:class=>"login-form form-horizontal"} do |form|
+              = form.text_field :mail, :value=>@mail, :placeholder=>t("user")
+              = form.text_field :passord, :placeholder=>t("password"), :type=>:password
+              = form.submit "Logg inn", :class=>"btn"

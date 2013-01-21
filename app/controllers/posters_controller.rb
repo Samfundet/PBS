@@ -53,7 +53,7 @@ class PostersController < ApplicationController
     poster = Poster.find(params[:id])
     poster.status = :canceled
     if poster.save
-      flash[:success] = "Plakaten er naa avbestilt"
+      flash[:success] = "Plakaten er nå avbestilt"
       redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, plakaten er ikke avbestilt"
@@ -77,7 +77,7 @@ class PostersController < ApplicationController
     @poster.responsible = @current_user
     if @poster.save
       PosterMailer.poster_taken(@poster).deliver
-      flash[:success] = "Du er naa ansvarlig."
+      flash[:success] = "Du er nå ansvarlig."
       redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, du ble ikke gjort til ansvarlig"
