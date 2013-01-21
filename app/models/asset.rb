@@ -11,7 +11,7 @@ class Asset < ActiveRecord::Base
 
   validate :too_large_file
   def too_large_file
-    if image_file_size > 1000000
+    if image_file_size > 50000000
       errors.add(:image_file_size, "The file is too large.")
     end
   end
