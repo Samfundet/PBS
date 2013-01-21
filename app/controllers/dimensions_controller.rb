@@ -40,7 +40,7 @@ class DimensionsController < ApplicationController
     dim = Dimension.find(params[:id])
     dim.status = false
     if dim.save
-      flash[:success] = "Dimensjonen er arkivert."
+      flash[:success] = "Dimensjonen #{dim} er nå arkivert."
       redirect_to dimensions_path
     else
       flash[:error]  = "Noe gikk galt, dimensjonen er ikke arkivert"
@@ -51,7 +51,7 @@ class DimensionsController < ApplicationController
     dim = Dimension.find(params[:id])
     dim.status = true
     if dim.save
-      flash[:success] = "Dimensjonen er gjenopprettet."
+      flash[:success] = "Dimensjonen #{dim} er nå gjenopprettet."
       redirect_to dimensions_path
     else
       flash[:error] = "Noe gikk galt, dimensjonen er ikke gjenopprettet."

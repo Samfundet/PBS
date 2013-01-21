@@ -1,8 +1,31 @@
+
 .success {
-    border:1px solid green;
     color:green;
-    font-size:20pt;
+    font-size:13pt;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 30px;
 }
+
+
+.notice {
+    color:yellow;
+    font-size:13pt;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 30px;
+}
+
+.error {
+    color:red;
+    font-size:13pt;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 30px;
+}
+
+
+
 
 li {
   list-style: none;
