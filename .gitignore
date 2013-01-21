@@ -18,3 +18,5 @@
 /public/assets/
 
 /deploy
+
+/config/database.yml
