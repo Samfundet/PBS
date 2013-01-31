@@ -9,9 +9,9 @@
 
 Rake::Task['samfundet_auth_engine:db:seed'].invoke
 
-Member.create!(:mail=>'test1@test.com', :fornavn=>'test1', :passord=>'passord')
-Member.create!(:mail=>'test2@test.com', :fornavn=>'test2', :passord=>'passord')
-m = Member.create!(:mail=>'test3@test.com', :fornavn=>'test3', :passord=>'passord')
+Member.create!(:mail=>'test1@test.com', :fornavn=>'test1', :etternavn=>'test1', :telefon=>123345678, :passord=>'passord')
+Member.create!(:mail=>'test2@test.com', :fornavn=>'test2', :etternavn=>'test2', :telefon=>123345678, :passord=>'passord')
+m = Member.create!(:mail=>'test3@test.com', :fornavn=>'test3', :etternavn=>'test3', :telefon=>123345678, :passord=>'passord')
 
 m.roles << Role.create!(:name => "mg_layout_sjef", :description => "Sjef i layout", :title => "mg_layout")
 
