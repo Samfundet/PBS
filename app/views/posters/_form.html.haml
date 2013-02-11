@@ -6,8 +6,8 @@
     =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
     =p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
     =p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
-    =p.input :flyers, :hint => "Huk av om du ønsker flyers i tillegg."
-    =p.input :banner, :hint => "Huk av om du ønsker bannere i tillegg."
+    =p.input :flyers, :as => :radio, :hint => "Om du ønsker flyers i tillegg."
+    =p.input :banner, :as => :radio, :hint => "Om du ønsker bannere i tillegg."
     =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene.", :collection => Dimension.where(:status => true)
     =p.input :group, :hint => "Velg den gruppen som bestiller plakaten."
     =p.input :event, :hint => "Velg et event plakaten tilhører(valgfritt).", :collection => custom_event_options
