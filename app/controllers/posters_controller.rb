@@ -16,6 +16,7 @@ class PostersController < ApplicationController
       redirect_to posters_path
     else
       flash[:error] = "Vennligst fyll ut alle felter og tilse at opplastede filer er under 50MB og av tillatt type."
+      new()
       render :action => 'new'
     end
   end
@@ -33,6 +34,7 @@ class PostersController < ApplicationController
       redirect_to posters_path
     else
       flash[:error] = "Noe gikk galt, endringene ble ikke lagret. Tilse at opplastede filer er under 50MB og tillatt type."
+      new()
       render :action => 'edit'
     end
   end
