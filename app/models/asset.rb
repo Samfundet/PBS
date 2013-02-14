@@ -7,7 +7,7 @@ class Asset < ActiveRecord::Base
     :styles => {
         :thumb => '150x150#'
     }
-  validates_format_of :image_file_name, :with => /\.(bmp|jpg|jpeg|png|gif|ai|eps|svg|pdf|doc|docx|rtf|odt|txt)\Z/
+  validates_format_of :image_file_name, :with => /\.(?i)(bmp|jpg|jpeg|png|gif|ai|eps|svg|pdf|doc|docx|rtf|odt|txt)\Z/
 
   validate :too_large_file
   def too_large_file
