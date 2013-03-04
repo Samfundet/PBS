@@ -7,9 +7,9 @@ class Asset < ActiveRecord::Base
     :styles => {
         :thumb => '150x150#'
     }
-  validates_format_of :image_file_name, :with => /\.(?i)(bmp|jpg|jpeg|png|gif|ai|eps|svg|pdf)\Z/
+  validates_format_of :image_file_name, :with => /\.(?i)(bmp|jpg|jpeg|png|gif|ai|eps|svg|pdf)\Z/, :message => "Du forsokta a laste opp en fil ulovlig type."
 
-  validate :too_large_file
+  validate :too_large_file, :message => "Du forsoke a laste opp en for stor fil."
   def too_large_file
     if image_file_size > 50000000
       errors.add(:image_file_size, "The file is too large.")
