@@ -16,7 +16,13 @@
     %label{:class=>"label"}
       Vedlagte filer
     %p{:class=>"inline-hints"}
-      Last opp filer tilhørende plakatne. Maksimal filstørrelser 50 MB. Godkjente filtyper er jpg, jpeg, png, gif, ai, eps,vg og pdf.
+      Last opp filer tilhørende plakatne. Maksimal filstørrelser 50 MB. Godkjente filtyper er jpg, jpeg, png, gif, ai, ep svg og pdf.
+    %ul
+      - @poster.errors.each do |source, msg|
+        %li
+          -unless msg =~ /.*identify.*/ || msg =~ /.*blankt.*/
+            %span{:class=>"help-inline"}
+              =msg
     %ul{:class=>"asset-ui"}
       =p.fields_for :assets do |asset|
         -unless asset.object.new_record?
