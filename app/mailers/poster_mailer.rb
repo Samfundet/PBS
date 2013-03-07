@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class PosterMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "mg-layout@samfundet.no"
 
   def poster_changed(poster)
     if poster.responsible == nil
