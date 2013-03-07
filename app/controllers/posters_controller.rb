@@ -15,8 +15,8 @@ class PostersController < ApplicationController
       flash[:success] = "Plakaten er laget."
       redirect_to posters_path
     else
-      flash[:error] = "Vennligst fyll ut alle felter og tilse at opplastede filer er under 50MB og av tillatt type."
-      new()
+      flash[:error] = "Vennligst fyll ut alle felter korrekt."
+      50.times {@poster.assets.build}
       render :action => 'new'
     end
   end
@@ -33,8 +33,8 @@ class PostersController < ApplicationController
       flash[:success] = "Plakaten er endret."
       redirect_to posters_path
     else
-      flash[:error] = "Noe gikk galt, endringene ble ikke lagret. Tilse at opplastede filer er under 50MB og tillatt type."
-      edit()
+      flash[:error] = "Noe gikk galt, endringene ble ikke lagret."
+      50.times {@poster.assets.build}
       render :action => 'edit'
     end
   end
@@ -46,9 +46,7 @@ class PostersController < ApplicationController
   def new
     @poster = Poster.new
     @poster.orderer = @current_user
-    50.times {
-      @poster.assets.build
-    }
+    50.times {@poster.assets.build}
   end
 
   def cancel_poster
