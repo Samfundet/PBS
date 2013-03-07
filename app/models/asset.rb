@@ -19,7 +19,7 @@ class Asset < ActiveRecord::Base
   validate :too_large_file, :message => "Du forsoke a laste opp en for stor fil."
 
   def too_large_file
-    if image_file_size > 500000
+    if image_file_size > 50000000
         @errors.add(:asset, "Filen " + image_file_name + " er for stor.")
     end
   end
