@@ -7,9 +7,7 @@
       <%= csrf_meta_tags %>
     </head>
     <body>
-    <h3><%= yield :title %></h3>
     <%= render 'shared/navbar' %>
-
     <% unless flash.empty? %>
         <% flash.each do |key, val| %>
             <p class ="<%= "#{key}" %> well">
