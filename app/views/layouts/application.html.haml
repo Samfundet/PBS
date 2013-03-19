@@ -8,8 +8,9 @@
     = csrf_meta_tags
   %body
     = render 'shared/navbar'
-    - unless flash.empty?
-      - flash.each do |key, val|
-        %p{ :class => "#{key} well" }
-          = val
-    = yield
+    .container
+      - unless flash.empty?
+        - flash.each do |key, val|
+          %p{ :class => "#{key} well" }
+            = val
+      = yield
