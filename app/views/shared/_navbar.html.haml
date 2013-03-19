@@ -32,18 +32,16 @@
           %li
             =link_to "Dimensjoner", dimensions_path, {:title=>"Vis dimensjoner."}
 
-        %li{:class=>"divider-vertical"}
-
-        - if params[:order]=="asc"
-          %li
-            =link_to params.merge(:order => "desc"), {:title=>"Sorter synkende"} do
-              %i{:class=>"icon-arrow-up"}
-        - else
-          %li
-            =link_to params.merge(:order => "asc"), {:title=>"Sorter stigende"} do
-              %i{:class=>"icon-arrow-down"}
-
         - if @sort_column
+          %li{:class=>"divider-vertical"}
+          - if params[:order]=="asc"
+            %li
+              =link_to params.merge(:order => "desc"), {:title=>"Sorter synkende"} do
+                %i{:class=>"icon-arrow-up"}
+          - else
+            %li
+              =link_to params.merge(:order => "asc"), {:title=>"Sorter stigende"} do
+                %i{:class=>"icon-arrow-down"}
           %li
             %ul{:class=>"nav", :role=>"navigation"}
               %li{:class=>"dropdown"}
