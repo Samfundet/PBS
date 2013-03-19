@@ -120,7 +120,8 @@ class PostersController < ApplicationController
     end
   end
 
-  private 
+  private
+
   def sort_column
     if Poster.column_names.include?(params[:sort])
       @sort_column = params[:sort]
