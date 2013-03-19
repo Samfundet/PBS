@@ -3,7 +3,7 @@ class PostersController < ApplicationController
   filter_access_to [:edit, :update, :cancel_poster, :archive_poster, :restore], :attribute_check=>true
 
   def index
-    @posters = Poster.where(:status => :active).order("#{sort_column} #{sort_order}")
+    @posters = sort_posters Poster.where(:status => :active)
   end
 
   def create
@@ -61,15 +61,15 @@ class PostersController < ApplicationController
   end
 
   def cancel
-    @posters = Poster.where(:status => :canceled).order("#{sort_column} #{sort_order}")
+    @posters = sort_posters Poster.where(:status => :canceled)
   end
 
   def order
-    @posters = Poster.where(:orderer_id => @current_user.id).order("#{sort_column} #{sort_order}")
+    @posters = sort_posters Poster.where(:orderer_id => @current_user.id)
   end
 
   def take
-    @posters = Poster.where(:responsible_id => @current_user.id).order("#{sort_column} #{sort_order}")
+    @posters = sort_posters Poster.where(:responsible_id => @current_user.id)
   end
 
   def take_poster
@@ -86,7 +86,7 @@ class PostersController < ApplicationController
   end
 
   def archive
-    @posters = Poster.where(:status => :archived).order("#{sort_column} #{sort_order}")
+    @posters = sort_posters Poster.where(:status => :archived)
   end
 
   def archive_poster
@@ -122,15 +122,49 @@ class PostersController < ApplicationController
 
   private
 
-  def sort_column
-    if Poster.column_names.include?(params[:sort])
-      @sort_column = params[:sort]
-    else
-      @sort_column = 'updated_at'
-    end
-  end
+  def sort_posters(posters)
+    @sort_column = params[:sort] || 'updated_at'
+    @sort_order = ['asc', 'desc'].include?(params[:order]) ? params[:order] : 'desc'
 
-  def sort_order
-    ['asc', 'desc'].include?(params[:order]) ? params[:order] : 'desc'
+    easy_sortable_columns = %w(
+      id
+      name
+      poster_text
+      description
+      flyers
+      banner
+      status
+      send_to_press
+      event_time
+      created_at
+      updated_at
+    )
+
+    if easy_sortable_columns.include? @sort_column
+      posters.order "#{@sort_column} #{@sort_order}"
+    else
+      case @sort_column
+        when 'dimension_id'
+          posters.includes(:dimension)
+          posters.sort_by! { |p| p.dimension and p.dimension.text }
+        when 'group_id'
+          posters.includes(:group)
+          posters.sort_by! { |p| p.group and p.group.name }
+        when 'event_id'
+          posters.includes(:event)
+          posters.sort_by! { |p| p.event and p.event.title }
+        when 'responsible_id'
+          posters.includes(:responsible)
+          posters.sort_by! { |p| p.responsible and p.responsible.full_name }
+        when 'orderer_id'
+          posters.includes(:orderer)
+          posters.sort_by! { |p| p.orderer and p.orderer.full_name }
+        else
+          return posters.order "updated_at #{@sort_order}"
+      end
+
+      posters.reverse! if @sort_order == 'desc'
+      posters
+    end
   end
 end
