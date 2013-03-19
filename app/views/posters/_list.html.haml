@@ -19,7 +19,7 @@
             - if permitted_to? :destroy, t
               =link_to 'Slett', t, {:method=>:delete, :class=>"underline", :title=>"Slett"} 
           %h3
-            %a= link_to t.name, t
+            = link_to t.name, t
           %p
             =t.description
 

@@ -3,10 +3,10 @@
     %li
       %span #{t.id}: #{t.text}
       -if permitted_to? :edit , :dimensions
-        %a= link_to "edit", :action => "edit", :id => t
+        = link_to "edit", :action => "edit", :id => t
       -if t.status and permitted_to? :archive_dimension , :dimensions
-        %a= link_to "Arkiver", archive_dimension_path(t), :method => :put
+        = link_to "Arkiver", archive_dimension_path(t), :method => :put
       -if permitted_to? :restore , :dimensions and !(t.status)
-        %a= link_to "Gjenopprett", restore_dimension_path(t), :method => :put
+        = link_to "Gjenopprett", restore_dimension_path(t), :method => :put
 -if permitted_to? :new, :dimensions
-  %a= link_to "new", :action => "new"
+  = link_to "new", :action => "new"
