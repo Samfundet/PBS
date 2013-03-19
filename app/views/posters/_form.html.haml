@@ -1,18 +1,18 @@
 = javascript_include_tag "hideunusedfilefields.js"
 = javascript_include_tag "jquery-ui-timepicker-addon.js"
 = stylesheet_link_tag "assetgrid.css"
-=semantic_form_for @poster, :html => { :multipart => true, :class => "form-horizontal"} do |p|
-  =p.inputs :name => "Poster" do
-    =p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
-    =p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
-    =p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
-    =p.input :flyers, :as => :radio, :hint => "Om du ønsker flyers i tillegg."
-    =p.input :banner, :as => :radio, :hint => "Om du ønsker bannere i tillegg."
-    =p.input :dimension, :hint => "Velg ønsket størrelse på plakatene.", :collection => Dimension.where(:status => true)
-    =p.input :group, :hint => "Velg den gruppen som bestiller plakaten."
-    =p.input :event, :hint => "Velg et event plakaten tilhører(valgfritt).", :collection => custom_event_options
-    =p.input :area, :hint => "Velg sted denne eventen skjer."
-    =p.input :event_time,:as => :string, :input_html => {  :class => "datetimepicker", :placeholder => "DD.MM.ÅÅÅÅ HH:MM"}
+= semantic_form_for @poster, :html => { :multipart => true, :class => "form-horizontal"} do |p|
+  = p.inputs :name => "Poster" do
+    = p.input :name, :hint => "Forsøk å gi en beskrivende tittel."
+    = p.input :poster_text, :hint => "Dette er teksten som skal stå på plakaten."
+    = p.input :description, :hint => "Her kan du skrive om ting som ikke skal stå på plakaten, men som du synes der viktig for MG-Layout å vite."
+    = p.input :flyers, :as => :radio, :hint => "Om du ønsker flyers i tillegg."
+    = p.input :banner, :as => :radio, :hint => "Om du ønsker bannere i tillegg."
+    = p.input :dimension, :hint => "Velg ønsket størrelse på plakatene.", :collection => Dimension.where(:status => true)
+    = p.input :group, :hint => "Velg den gruppen som bestiller plakaten."
+    = p.input :event, :hint => "Velg et event plakaten tilhører(valgfritt).", :collection => custom_event_options
+    = p.input :area, :hint => "Velg sted denne eventen skjer."
+    = p.input :event_time,:as => :string, :input_html => {  :class => "datetimepicker", :placeholder => "DD.MM.ÅÅÅÅ HH:MM"}
     %label{:class=>"label"}
       Vedlagte filer
     %p{:class=>"inline-hints"}
@@ -20,12 +20,12 @@
     %ul
       - @poster.errors.each do |source, msg|
         %li
-          -unless msg =~ /.*identify.*/ || msg =~ /.*blankt.*/
+          - unless msg =~ /.*identify.*/ || msg =~ /.*blankt.*/
             %span{:class=>"help-inline"}
               =msg
     %ul{:class=>"asset-ui"}
-      =p.fields_for :assets do |asset|
-        -unless asset.object.new_record?
+      = p.fields_for :assets do |asset|
+        - unless asset.object.new_record?
           %li{:class=>"asset-li"}
             = link_to( image_tag(asset.object.image.url(:thumb), :title => asset.object.image_file_name), asset.object.image.url(:original) )
             %div{:class=>"filename"}
@@ -33,12 +33,12 @@
             %div{:align=>"center"}
               = asset.check_box :_destroy
               Slett fil.
-    =p.fields_for :assets do |asset|
+    = p.fields_for :assets do |asset|
       %p
-        -if asset.object.new_record?
+        - if asset.object.new_record?
           %div
             .newfilefield
               = asset.file_field :image
 
-    =p.action :submit
-    =p.action :cancel
+    = p.action :submit
+    = p.action :cancel

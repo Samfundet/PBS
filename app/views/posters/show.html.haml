@@ -7,10 +7,10 @@
 
   %div{:class=>"list_buttons"}
     - if @poster.status==:active
-      -if permitted_to? :edit, @poster
+      - if permitted_to? :edit, @poster
         =link_to "Rediger", edit_poster_path(@poster), {:class=>"underline", :title=>"Rediger"}
 
-      -if permitted_to? :archive, @poster
+      - if permitted_to? :archive, @poster
         =link_to "Arkiver", archive_poster_path(@poster), {:method => :put, :class=>"underline", :title=>"Arkiver"}
 
       - if permitted_to? :cancel_poster, @poster
@@ -34,7 +34,7 @@
       %td
         Bestiller:
       %td
-        -if @poster.orderer
+        - if @poster.orderer
           =@poster.orderer.full_name
       %td
         Event:
@@ -53,7 +53,7 @@
       %td
         Ansvarlig:
       %td
-        -if @poster.responsible
+        - if @poster.responsible
           =@poster.responsible.full_name
       %td
         Flyers:

@@ -2,11 +2,11 @@
   - @dims.each do |t|
     %li
       %span #{t.id}: #{t.text}
-      -if permitted_to? :edit , :dimensions
+      - if permitted_to? :edit , :dimensions
         = link_to "edit", :action => "edit", :id => t
-      -if t.status and permitted_to? :archive_dimension , :dimensions
+      - if t.status and permitted_to? :archive_dimension , :dimensions
         = link_to "Arkiver", archive_dimension_path(t), :method => :put
-      -if permitted_to? :restore , :dimensions and !(t.status)
+      - if permitted_to? :restore , :dimensions and !(t.status)
         = link_to "Gjenopprett", restore_dimension_path(t), :method => :put
--if permitted_to? :new, :dimensions
+- if permitted_to? :new, :dimensions
   = link_to "new", :action => "new"
