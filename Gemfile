@@ -50,6 +50,9 @@ group :development do
   gem 'sqlite3'
   gem 'annotate'
   gem 'faker'
+
+  # WEBrick is a Ruby library providing simple HTTP web server services.
+  gem 'webrick'
 end
 
 group :production do
