@@ -11,8 +11,7 @@ class DimensionsController < ApplicationController
       flash[:success] = "Dimensjonen er laget."
       redirect_to dimensions_path
     else
-      flash[:error] = "Vennligst fyll ut alle felter."
-      redirect_to new_dimension_path(@dim)
+      render :new
     end
   end
 
